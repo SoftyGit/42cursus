@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:48:16 by yongjale          #+#    #+#             */
-/*   Updated: 2023/02/20 21:23:24 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:50:53 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	sl_error(int code)
 {
+	write(1, "ERROR\n", 7);
 	if (code == MALLOC_ERR)
 		write(1, "MALLOC ERROR OCCURED", 21);
 	else if (code == READ_ERR)
@@ -24,6 +25,8 @@ void	sl_error(int code)
 		write(1, "MAP IS EMPTY", 13);
 	else if (code == NON_RECT_MAP_ERR)
 		write(1, "MAP IS NOT RECTANGULAR", 23);
+	else if (code == NON_SURROUNG_WALL_MAP_ERR )
+		write(1, "MAP IS NOT SURROUNDED BY WALLS", 31);
 	else if (code == INVALID_WALL_MAP_ERR)
 		write(1, "WALLS OF MAP ARE INVALID", 25);
 	else if (code == INVALID_ELEMENTS_MAP_ERR)

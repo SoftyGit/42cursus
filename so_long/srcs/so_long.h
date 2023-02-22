@@ -6,12 +6,12 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:56:29 by yongjale          #+#    #+#             */
-/*   Updated: 2023/02/21 00:43:39 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/02/21 17:07:54 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx/mlx.h"
-#include "get_next_line.h"
+#include "../mlx/mlx.h"
+#include "../gnl/get_next_line.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -19,8 +19,8 @@
 
 typedef struct	s_locations{
 	int	amount;
-	int	*x;
-	int	*y;
+	int	x[100];
+	int	y[100];
 }	t_locations;
 
 typedef struct	s_vars {
@@ -30,9 +30,12 @@ typedef struct	s_vars {
 	void		*img2;
 	void		*img3;
 	void		*img4;
+	void		*img5;
+	char		**map_addr;
 	int			row_length;
 	int			col_length;
-	t_locations	l_player;
+	int			move_records;
+	int			prey_collect;
 	t_locations	l_start;
 	t_locations l_end;
 	t_locations	l_prey;
@@ -61,6 +64,7 @@ enum ERROR{
 	READ_ERR = 11,
 	NON_MAP_ERR = 20,
 	NON_RECT_MAP_ERR = 21,
+	NON_SURROUNG_WALL_MAP_ERR = 22,
 	INVALID_WALL_MAP_ERR = 22,
 	INVALID_ELEMENTS_MAP_ERR = 23,
 	INVALID_PLAYER_ELEMENT_MAP_ERR = 24,
@@ -71,15 +75,20 @@ enum ERROR{
 # define BACKGROUND_ROW 500
 # define BACKGROUND_COL 800
 
+void	sl_initialize_int_vars(t_vars *vars);
 char	**sl_open_file(char	*dir, t_vars *vars);
 int		sl_key_hook(int keycode, t_vars *vars);
-int		sl_destroy_hook(int keycode, t_vars *vars);
+int		sl_destroy_hook(t_vars *vars);
 void	sl_control_hook(int keycode, t_vars *vars);
 int		sl_count_line(int fd);
 char	**sl_record_map(int fd, int length);
+void	sl_record_mapdata(char **map, int row, int col, t_vars *vars);
 void	sl_assign_mapdata(char **map, t_vars *vars);
 size_t	sl_strlen(const char *s);
+char	*sl_itoa(int n);
 void	sl_error(int code);
 void	sl_check_mapdata(char **map, t_vars *vars);
+void	sl_check_elements_when_move(int row, int col, char **map, t_vars *vars);
 void	sl_update_window(char **map, t_vars *vars);
 void	sl_adjust_background(t_vars *vars);
+void	sl_move_player(int row_var, int col_var, t_vars *vars);

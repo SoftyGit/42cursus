@@ -1,10 +1,17 @@
-NAME = libftprintf.a
+NAME = so_long
 CC = CC
 CFLAG = -Wall -Wextra -Werror
-MLX_PATH = ./mlx
+PATH_MLX = ./mlx
 
 
-SRCS =  main.c
+SRCS =  gnl/get_next_line.c\
+		gnl/get_next_line_utils.c\
+		srcs/sl_init.c\
+		srcs/sl_input_hooks.c\
+		srcs/sl_main.c\
+		srcs/sl_map_utils.c\
+		srcs/sl_other_utils.c\
+		srcs/sl_output.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -12,13 +19,8 @@ all: ${NAME}
 
 bonus : 
 
-${NAME}: $(OBJS)
-	make all -C ${LIBFT}
-	cp ${LIBFT}/${LIBFT_LIB} ${NAME}
-	ar rc $(NAME) $(OBJS)
-
-%.o : %.c
-	$(CC) $(CFLAG) -c $< -o $@ -I.
+${NAME}: 
+	$(CC) $(CFLAG) ${SRCS} -o ${NAME} -I.
 
 clean:
 	make clean -C ${LIBFT}
