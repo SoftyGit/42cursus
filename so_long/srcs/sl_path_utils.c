@@ -17,7 +17,7 @@ void	sl_check_valid_path(int	num, char **map, t_vars *vars)
 	int	i;
 
 	if (vars->map_recur == NULL)
-		vars->map_recur = (char *)malloc((char)(vars->row_length * vars->col_length + 1));
+		vars->map_recur = (char *)malloc(vars->row_length * vars->col_length + 1);
 	i = 0;
 	while (i < (vars->row_length * vars->col_length))
 		vars->map_recur[i++] = 0;
