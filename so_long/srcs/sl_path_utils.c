@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:14:38 by yongjale          #+#    #+#             */
-/*   Updated: 2023/02/23 19:19:33 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/02/24 17:01:42 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	sl_check_valid_path(int	num, char **map, t_vars *vars)
 	while (i < (vars->row_length * vars->col_length))
 		vars->map_recur[i++] = 0;
 	vars->map_recur[i] = 0;
-	exit(0);
 	if (sl_recur_prey_to_player(vars->l_prey.y[num], vars->l_prey.x[num], map, vars) == 0)
 	{
 		free(vars->map_recur);
@@ -54,10 +53,11 @@ int		sl_check_valid_recur(int row, int col, t_vars *vars, int status)
 		return (0);
 	if (row >= 0 && row < vars->row_length)
 		if (col >= 0 && col < vars->col_length)
-			if(vars->map_recur[row * (vars->col_length) + col] == 0)
-			{
-				vars->map_recur[row * (vars->col_length) + col] = 1;
-				return (1);
-			}
+			if (vars->map_addr[row][col] != '1')
+				if(vars->map_recur[row * (vars->col_length) + col] == 0)
+				{
+					vars->map_recur[row * (vars->col_length) + col] = 1;
+					return (1);
+				}
 	return (0);
 }

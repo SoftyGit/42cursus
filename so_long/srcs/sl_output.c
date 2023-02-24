@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:48:16 by yongjale          #+#    #+#             */
-/*   Updated: 2023/02/21 16:50:53 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/02/24 16:52:29 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ void	sl_error(int code)
 		write(1, "MAP IS NOT RECTANGULAR", 23);
 	else if (code == NON_SURROUNG_WALL_MAP_ERR )
 		write(1, "MAP IS NOT SURROUNDED BY WALLS", 31);
+	else if (code == NON_VALID_PATH_FROM_PLAYER_TO_PREY)
+		write(1, "THERE IS NO WAY TO APPROACH SOME PREYS", 39);
 	else if (code == INVALID_WALL_MAP_ERR)
 		write(1, "WALLS OF MAP ARE INVALID", 25);
 	else if (code == INVALID_ELEMENTS_MAP_ERR)
-		write(1, "INVALID START/END/PREYS POINTS", 31);
+		write(1, "INVALID START/END/PREYS POINTS OR VALUES", 41);
 	else if (code == INVALID_PLAYER_ELEMENT_MAP_ERR)
 		write(1, "INVALID_START_POINTS", 21);
 	else if (code == INVALID_ESCAPE_ELEMENT_MAP_ERR)
