@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:56:29 by yongjale          #+#    #+#             */
-/*   Updated: 2023/02/21 17:07:54 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/02/23 19:18:29 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct	s_vars {
 	void		*img4;
 	void		*img5;
 	char		**map_addr;
+	char		*map_recur;
 	int			row_length;
 	int			col_length;
 	int			move_records;
@@ -65,6 +66,7 @@ enum ERROR{
 	NON_MAP_ERR = 20,
 	NON_RECT_MAP_ERR = 21,
 	NON_SURROUNG_WALL_MAP_ERR = 22,
+	NON_VALID_PATH_FROM_PLAYER_TO_PREY = 23,
 	INVALID_WALL_MAP_ERR = 22,
 	INVALID_ELEMENTS_MAP_ERR = 23,
 	INVALID_PLAYER_ELEMENT_MAP_ERR = 24,
@@ -89,6 +91,9 @@ char	*sl_itoa(int n);
 void	sl_error(int code);
 void	sl_check_mapdata(char **map, t_vars *vars);
 void	sl_check_elements_when_move(int row, int col, char **map, t_vars *vars);
+void	sl_check_valid_path(int	num, char **map, t_vars *vars);
+int		sl_check_valid_recur(int row, int col, t_vars *vars, int status);
+int		sl_recur_prey_to_player(int row, int col, char **map, t_vars *vars);
 void	sl_update_window(char **map, t_vars *vars);
 void	sl_adjust_background(t_vars *vars);
 void	sl_move_player(int row_var, int col_var, t_vars *vars);

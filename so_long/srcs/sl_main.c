@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 23:41:06 by yongjale          #+#    #+#             */
-/*   Updated: 2023/02/21 16:46:23 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/02/23 19:16:12 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc, char **argv)
 
 void	sl_initialize_int_vars(t_vars *vars)
 {
+	vars->map_recur = NULL;
 	vars->row_length = 0;
 	vars->col_length = 0;
 	vars->move_records = 0;
