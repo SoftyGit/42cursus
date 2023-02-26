@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_main.c                                          :+:      :+:    :+:   */
+/*   sl_main_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 23:41:06 by yongjale          #+#    #+#             */
-/*   Updated: 2023/02/24 19:14:32 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:14:17 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	main(int argc, char **argv)
 {
@@ -34,6 +34,8 @@ int	main(int argc, char **argv)
 	vars.img4 = mlx_xpm_file_to_image(vars.mlx, "imgs/cake.xpm",
 			&imgs.back[0], &imgs.back[1]);
 	vars.img5 = mlx_xpm_file_to_image(vars.mlx, "imgs/door.xpm",
+			&imgs.back[0], &imgs.back[1]);
+	vars.img6 = mlx_xpm_file_to_image(vars.mlx, "imgs/enemey.xpm",
 			&imgs.back[0], &imgs.back[1]);
 	sl_update_window(map, &vars);
 	mlx_hook(vars.win, ON_KEY_PRESS, 0, sl_key_hook, &vars);

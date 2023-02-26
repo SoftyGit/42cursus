@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_init.c                                          :+:      :+:    :+:   */
+/*   sl_init_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:59:10 by yongjale          #+#    #+#             */
-/*   Updated: 2023/02/24 19:21:33 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:13:05 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	sl_check_elements_when_move(int row, int col, char **map, t_vars *vars)
 {
@@ -46,6 +46,9 @@ void	sl_update_window(char **map, t_vars *vars)
 			else if (map[row][col] == 'E')
 				mlx_put_image_to_window(vars->mlx, vars->win,
 					vars->img5, col * 50, row * 50);
+			else if (map[row][col] == 'e')
+				mlx_put_image_to_window(vars->mlx, vars->win,
+					vars->img6, col * 50, row * 50);
 			col++;
 		}
 		row++;

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_input_hooks.c                                   :+:      :+:    :+:   */
+/*   sl_input_hooks_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:59:15 by yongjale          #+#    #+#             */
-/*   Updated: 2023/02/24 19:48:03 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:13:08 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	sl_key_hook(int keycode, t_vars *vars)
 {

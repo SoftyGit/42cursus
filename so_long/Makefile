@@ -1,6 +1,7 @@
 NAME = so_long
 CC = CC
 CFLAG = -Wall -Wextra -Werror
+MLXFLAG = -I./mlx -L./mlx -lmlx -framework OpenGL -framework AppKit
 PATH_MLX = ./mlx
 
 
@@ -11,7 +12,8 @@ SRCS =  gnl/get_next_line.c\
 		srcs/sl_main.c\
 		srcs/sl_map_utils.c\
 		srcs/sl_other_utils.c\
-		srcs/sl_output.c
+		srcs/sl_output.c\
+		srcs/sl_path_utils.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -19,17 +21,19 @@ all: ${NAME}
 
 bonus : 
 
-${NAME}: 
-	$(CC) $(CFLAG) ${SRCS} -o ${NAME} -I.
+${NAME}: ${OBJS}
+	${CC} ${CFLAG} ${MLXFLAG} ${OBJS} -o ${NAME}
+
+%.o: %.c
+	${CC} ${CFLAG} -c $< -o $@
 
 clean:
-	make clean -C ${LIBFT}
 	rm -rf ${OBJS}
 
 fclean: clean
-	make fclean -C ${LIBFT}
 	rm -rf ${NAME}
 
 re: fclean all
+
 
 .PHONY: bonus clean fclean re

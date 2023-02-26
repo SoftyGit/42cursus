@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_path_utils.c                                    :+:      :+:    :+:   */
+/*   sl_path_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:14:38 by yongjale          #+#    #+#             */
-/*   Updated: 2023/02/24 19:36:19 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:13:23 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	sl_check_valid_path(int num, char **map, t_vars *vars)
 {

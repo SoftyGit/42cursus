@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_map_utils.c                                     :+:      :+:    :+:   */
+/*   sl_map_utils_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:07:38 by yongjale          #+#    #+#             */
-/*   Updated: 2023/02/25 23:19:16 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:31:41 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	sl_count_line(int fd)
 {
@@ -61,9 +61,11 @@ void	sl_assign_mapdata(char **map, t_vars *vars)
 void	sl_record_mapdata(char **map, int row, int col, t_vars *vars)
 {
 	t_locations	*locations;
-	size_t		num;
-
+	int	num;
+	int	cnt;
+	
 	num = 0;
+	cnt = (vars->row_length * vars->col_length) % ENEMEY_DENSITY;
 	if (row == 0 || row == (vars->row_length) - 1
 		|| col == 0 || col == (vars->col_length) - 1)
 		if (map[row][col] != '1')
