@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:48:16 by yongjale          #+#    #+#             */
-/*   Updated: 2023/02/24 19:30:45 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/03/05 14:30:27 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	sl_error(int code)
 {
-	write(1, "ERROR\n", 7);
+	write(1, "Error\n", 7);
 	if (code == MALLOC_ERR || code == READ_ERR)
 		write(1, "MALLOC/READ ERROR OCCURED", 26);
 	else if (code == INPUT_ERR)
@@ -26,7 +26,7 @@ void	sl_error(int code)
 	else if (code == NON_SURROUNG_WALL_MAP_ERR)
 		write(1, "MAP IS NOT SURROUNDED BY WALLS", 31);
 	else if (code == NON_VALID_PATH_FROM_PLAYER_TO_PREY)
-		write(1, "THERE IS NO WAY TO APPROACH SOME PREYS", 39);
+		write(1, "THERE IS NO WAY TO APPROACH SOME END/PREYS POINTS", 50);
 	else if (code == INVALID_WALL_MAP_ERR)
 		write(1, "WALLS OF MAP ARE INVALID", 25);
 	else if (code == INVALID_ELEMENTS_MAP_ERR)

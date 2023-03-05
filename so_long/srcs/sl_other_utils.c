@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:45:37 by yongjale          #+#    #+#             */
-/*   Updated: 2023/02/24 19:18:31 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/03/05 13:41:40 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,14 @@ char	*sl_itoa(int n)
 		val /= 10;
 	}
 	return (ret);
+}
+
+void	sl_free(int err_num, char **map)
+{
+	int	num;
+
+	num = 0;
+	while (num < err_num)
+		free(map[num++]);
+	sl_error(MALLOC_ERR);
 }

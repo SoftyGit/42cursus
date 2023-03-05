@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 23:41:06 by yongjale          #+#    #+#             */
-/*   Updated: 2023/02/24 19:14:32 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/03/05 13:44:41 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	sl_initialize_int_vars(t_vars *vars)
 	vars->l_end.amount = 0;
 	vars->l_start.amount = 0;
 	vars->l_prey.amount = 0;
+	vars->prey_collect = 0;
 }
 
 char	**sl_open_file(char *dir, t_vars *vars)
@@ -65,13 +66,9 @@ char	**sl_open_file(char *dir, t_vars *vars)
 	vars->row_length = sl_count_line(fd);
 	close(fd);
 	fd = open(dir, O_RDONLY);
-	if (!(vars->row_length))
-		sl_error(NON_MAP_ERR);
 	map = sl_record_map(fd, vars->row_length);
 	vars->map_addr = map;
 	vars->col_length = sl_strlen(map[0]);
-	if (!map)
-		sl_error(MALLOC_ERR);
 	sl_assign_mapdata(map, vars);
 	sl_check_mapdata(map, vars);
 	return (map);
