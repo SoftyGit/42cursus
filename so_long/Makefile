@@ -1,8 +1,7 @@
 NAME = so_long
 CC = CC
-CFLAG = -Wall -Wextra -Werror -fsanitize=address
+CFLAG = -Wall -Wextra -Werror
 MLXFLAG = -I./mlx -L./mlx -lmlx -framework OpenGL -framework AppKit
-PATH_MLX = ./mlx
 
 
 SRCS =  gnl/get_next_line.c\

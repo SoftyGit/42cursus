@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:59:15 by yongjale          #+#    #+#             */
-/*   Updated: 2023/03/05 14:33:10 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/03/20 20:07:55 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	sl_control_hook(int keycode, t_vars *vars)
 		col_var++;
 	else if (keycode == KEY_A)
 		col_var--;
+	else
+		return ;
 	sl_move_player(row_var, col_var, vars);
 }
 
@@ -64,6 +66,7 @@ void	sl_move_player(int row_var, int col_var, t_vars *vars)
 		movements = sl_itoa(++vars->move_records);
 		write(1, "MOVE: ", 7);
 		write(1, movements, sl_strlen(movements));
+		free(movements);
 		write(1, "\n", 1);
 		sl_check_elements_when_move(*row, *col, map, vars);
 		sl_update_window(map, vars);

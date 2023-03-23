@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:56:29 by yongjale          #+#    #+#             */
-/*   Updated: 2023/03/05 14:08:46 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/03/23 20:30:35 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "../mlx/mlx.h"
 # include "../gnl/get_next_line.h"
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
 
