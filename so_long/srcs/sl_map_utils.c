@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:07:38 by yongjale          #+#    #+#             */
-/*   Updated: 2023/03/23 20:31:34 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/04/27 00:58:42 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	sl_assign_mapdata(char **map, t_vars *vars)
 		}
 		row++;
 	}
-	vars->prey_collect = vars->l_prey.amount;
 }
 
 void	sl_record_mapdata(char **map, int row, int col, t_vars *vars)
