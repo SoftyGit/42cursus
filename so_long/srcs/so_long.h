@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:56:29 by yongjale          #+#    #+#             */
-/*   Updated: 2023/04/27 00:51:37 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/05/18 21:48:33 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <stdio.h>
+
+# define MAX_AMOUNT 1024
 
 typedef struct s_locations{
 	int	amount;
-	int	x[1024];
-	int	y[1024];
+	int	x[MAX_AMOUNT];
+	int	y[MAX_AMOUNT];
 }	t_locations;
 
 typedef struct s_vars {
@@ -87,6 +88,7 @@ int		sl_count_line(int fd);
 char	**sl_record_map(int fd, int length);
 void	sl_record_mapdata(char **map, int row, int col, t_vars *vars);
 void	sl_assign_mapdata(char **map, t_vars *vars);
+int		sl_strncmp(const char *s1, const char *s2, size_t n);
 size_t	sl_strlen(const char *s);
 char	*sl_itoa(int n);
 void	sl_error(int code);

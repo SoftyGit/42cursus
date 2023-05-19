@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:07:38 by yongjale          #+#    #+#             */
-/*   Updated: 2023/04/27 00:58:42 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/05/18 21:48:59 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	sl_check_mapdata(char **map, t_vars *vars)
 	else if (vars->l_prey.amount == 0)
 		sl_error(INVALID_PREY_ELEMENT_MAP_ERR);
 	i = 0;
-	prey = vars->prey_collect;
+	prey = vars->l_prey.amount;
 	vars->l_prey.x[prey] = vars->l_end.x[0];
 	vars->l_prey.y[prey] = vars->l_end.y[0];
 	while (i < prey + 1)

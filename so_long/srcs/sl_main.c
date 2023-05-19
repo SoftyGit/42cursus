@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 23:41:06 by yongjale          #+#    #+#             */
-/*   Updated: 2023/04/27 00:37:44 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/05/18 21:48:50 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ char	**sl_open_file(char *dir, t_vars *vars)
 	fd = open(dir, O_RDONLY);
 	if (fd == -1)
 		sl_error(READ_ERR);
+	if (sl_strlen(dir) < 4)
+		write(0, "[REF] THE NAME OF FILE IS NOT '.BER'-TERMINATED\n", 49);
+	else if (sl_strncmp(dir + sl_strlen(dir) - 4, ".ber", 4) != 0)
+		write(0, "[REF] THE NAME OF FILE IS NOT '.BER'-TERMINATED\n", 49);
 	vars->row_length = sl_count_line(fd);
 	close(fd);
 	fd = open(dir, O_RDONLY);

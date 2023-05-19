@@ -1,44 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_other_utils.c                                   :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fearingsoft <fearingsoft@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 15:45:37 by yongjale          #+#    #+#             */
-/*   Updated: 2023/05/18 21:28:56 by yongjale         ###   ########.fr       */
+/*   Created: 2022/11/25 03:29:14 by fearingsoft       #+#    #+#             */
+/*   Updated: 2022/12/17 01:17:34 by fearingsoft      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	sl_strncmp(const char *s1, const char *s2, size_t n)
-{
-	while (n--)
-	{
-		if (*(unsigned char *)s1 > *(unsigned char *)s2)
-			return (1);
-		else if (*(unsigned char *)s1 < *(unsigned char *)s2)
-			return (-1);
-		else if (!*s1)
-			return (0);
-		s1++;
-		s2++;
-	}
-	return (0);
-}
-
-size_t	sl_strlen(const char *s)
-{
-	size_t	len;
-
-	len = 0;
-	while (*(s) != '\n' && *(s++))
-		len++;
-	return (len);
-}
-
-char	*sl_itoa(int n)
+char	*ft_itoa(int n)
 {
 	size_t	len;
 	char	*ret;
@@ -65,14 +39,4 @@ char	*sl_itoa(int n)
 		val /= 10;
 	}
 	return (ret);
-}
-
-void	sl_free(int err_num, char **map)
-{
-	int	num;
-
-	num = 0;
-	while (num < err_num)
-		free(map[num++]);
-	sl_error(MALLOC_ERR);
 }
