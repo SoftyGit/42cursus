@@ -21,12 +21,14 @@ all: ${NAME}
 bonus : 
 
 ${NAME}: ${OBJS}
+	make re -C mlx
 	${CC} ${CFLAG} ${MLXFLAG} ${OBJS} -o ${NAME}
 
 %.o: %.c
 	${CC} ${CFLAG} -c $< -o $@
 
 clean:
+	make clean -C mlx
 	rm -rf ${OBJS}
 
 fclean: clean
