@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.h                                              :+:      :+:    :+:   */
+/*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/28 10:33:29 by yongjale          #+#    #+#             */
-/*   Updated: 2023/06/28 10:33:31 by yongjale         ###   ########.fr       */
+/*   Created: 2023/06/28 10:33:18 by yongjale          #+#    #+#             */
+/*   Updated: 2023/06/28 11:24:47 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#ifndef TEST_H
+# define TEST_H
 
-# include <unistd.h>
+# include "ps.h"
+# include <stdio.h>
 
-int	ps_atoi(const char *str);
-int	ps_isdigit(int c);
-size_t	ps_strlen(const char *s);
+void	ps_printer(int	data);
+void	ps_lstiter(t_node *lst, void (*f)(int));
+void	ps_lstreviter(t_node *lst, void (*f)(int));
 
 #endif
