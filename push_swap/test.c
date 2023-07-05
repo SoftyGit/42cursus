@@ -10,7 +10,7 @@ void	ps_lstiter(t_node *lst, void (*f)(int))
 {
 	while (lst)
 	{
-		f(lst -> data);
+		f(lst -> num);
 		lst = lst -> next;
 	}
 }
@@ -19,7 +19,7 @@ void	ps_lstreviter(t_node *lst, void (*f)(int))
 {
 	while (lst)
 	{
-		f(lst -> data);
+		f(lst -> num);
 		lst = lst -> prev;
 	}
 }

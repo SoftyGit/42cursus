@@ -6,15 +6,18 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 21:36:40 by yongjale          #+#    #+#             */
-/*   Updated: 2023/06/28 14:21:49 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/02 12:31:52 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PS_H
 # define PS_H
 
+# define INT_MAX 2147483647
+
 typedef struct	s_node
 {
+	int				num;
 	int				data;
 	struct s_node	*prev;
 	struct s_node	*next;

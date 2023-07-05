@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 21:34:08 by yongjale          #+#    #+#             */
-/*   Updated: 2023/06/28 14:21:50 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/02 12:38:22 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 static void	initialize(t_stack *a, t_stack *b);
 static void	dup_check(int data, t_node *cur_node);
 static void	check(char **argv, t_stack *a);
+static void	assign(t_stack *a);
 
 int	main(int argc, char **argv)
 {
@@ -28,6 +29,9 @@ int	main(int argc, char **argv)
 	initialize(&a, &b);
 	check(argv, &a);
 	ps_lstiter(a.top, ps_printer);
+	assign(&a);
+	ps_lstiter(a.top, ps_printer);
+	exit(0);
 	ps_lstreviter(a.bot, ps_printer);
 }
 
@@ -63,6 +67,8 @@ static void	check(char **argv, t_stack *a)
 		new_node->prev = NULL;
 		new_node->next = a->top;
 		new_node->data = ps_atoi(argv[i]);
+		new_node->num = -1;
+		a->length++;
 		dup_check(new_node->data, a->top);
 		if (a->top)
 			a->top->prev = new_node;
@@ -70,5 +76,32 @@ static void	check(char **argv, t_stack *a)
 			a->bot = new_node;
 		a->top = new_node;
 		i++;
+	}
+}
+
+static void	assign(t_stack *a)
+{
+	t_node		*min_node;
+	t_node		*cur_node;
+	int			num;
+	long long	min;
+
+	num = 0;
+	while (num < (a->length))
+	{
+		min = INT_MAX;
+		min_node = a->top;
+		cur_node = a->top;
+		while (cur_node)
+		{
+			if (cur_node->data <= min && cur_node->num == -1)
+			{
+				min = cur_node ->data;
+				min_node = cur_node;
+			}
+			cur_node = cur_node->next;
+		}
+		min_node->num = num;
+		num++;
 	}
 }
