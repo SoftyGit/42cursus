@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 23:11:40 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/05 23:16:41 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/06 08:58:55 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,8 @@ void	sb(t_stack	*b);
 void	ss(t_stack	*a, t_stack	*b);
 void	pa(t_stack	*a, int data);
 void	pb(t_stack	*b, int data);
+void	ra(t_stack *a);
+void	rb(t_stack *b);
+void	rr(t_stack *a, t_stack *b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 23:03:24 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/05 23:15:46 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/06 08:56:31 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	sa(t_stack	*a)
 	first->next = second->next;
 	second->prev = NULL;
 	second->next = first;
+	a->top = second;
 }
 
 void	sb(t_stack	*b)
@@ -36,6 +37,7 @@ void	sb(t_stack	*b)
 	first->next = second->next;
 	second->prev = NULL;
 	second->next = first;
+	b->top = second;
 }
 
 void	ss(t_stack	*a, t_stack	*b)
