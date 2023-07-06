@@ -1,59 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   order2.c                                           :+:      :+:    :+:   */
+/*   order3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 08:52:56 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/06 10:23:15 by yongjale         ###   ########.fr       */
+/*   Created: 2023/07/06 10:16:14 by yongjale          #+#    #+#             */
+/*   Updated: 2023/07/06 10:25:15 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "order.h"
 
-void	ra(t_stack *a)
+void	rra(t_stack *a)
 {
 	t_node  *first;
-	t_node  *second;
+	t_node  *lastsecond;
 	t_node  *last;
 
 	if (a->top == a->bot)
 		return ;
 	first = a->top;
-	second = first->next;
+	lastsecond = last->prev;
 	last = a->bot;
-	last->next = first;
 	first->prev = last;
-	first->next = NULL;
-	if (second != last)
-		second->prev = NULL;
-	a->top = second;
-	a->bot = last;
+	last->next = first;
+	last->prev = NULL;
+	if (lastsecond != last)
+		lastsecond->next = NULL;
+	a->top = last;
+	a->bot = lastsecond;
 }
 
-void	rb(t_stack *b)
+void	rrb(t_stack *b)
 {
 	t_node  *first;
-	t_node  *second;
+	t_node  *lastsecond;
 	t_node  *last;
 
 	if (b->top == b->bot)
 		return ;
 	first = b->top;
-	second = first->next;
+	lastsecond = last->prev;
 	last = b->bot;
-	last->next = first;
 	first->prev = last;
-	first->next = NULL;
-	if (second != last)
-		second->prev = NULL;
-	b->top = second;
-	b->bot = last;
+	last->next = first;
+	last->prev = NULL;
+	if (lastsecond != last)
+		lastsecond->next = NULL;
+	b->top = last;
+	b->bot = lastsecond;
 }
 
-void	rr(t_stack *a, t_stack *b)
+void	rrr(t_stack *a, t_stack *b)
 {
-	ra(a);
-	ra(b);
+	rra(a);
+	rrb(b);	
 }

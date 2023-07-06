@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 23:03:24 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/06 08:56:31 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/06 10:24:24 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	sa(t_stack	*a)
 {
 	t_node	*first;
 	t_node	*second;
-
+	
+	if (a->top == a->bot)
+		return ;
 	first = a->top;
 	second = a->top->next;
 	first->prev = second;
@@ -31,6 +33,8 @@ void	sb(t_stack	*b)
 	t_node	*first;
 	t_node	*second;
 
+	if (b->top == b->bot)
+		return ;
 	first = b->top;
 	second = b->top->next;
 	first->prev = second;
