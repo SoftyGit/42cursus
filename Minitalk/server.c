@@ -6,14 +6,14 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 17:50:41 by yongjale          #+#    #+#             */
-/*   Updated: 2023/05/22 11:00:22 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/09 13:12:41 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 #include "server.h"
 
-int main()
+int	main(void)
 {
 	ft_printf("%d\n", getpid());
 	signal(SIGUSR1, server_signal);

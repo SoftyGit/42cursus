@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 21:34:08 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/06 10:23:48 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/09 13:09:36 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	a;
 	t_stack	b;
+
 	if (argc == 1)
 		ps_error();
 	initialize(&a, &b);
@@ -57,8 +58,8 @@ static void	dup_check(int data, t_node *cur_node)
 
 static void	check(char **argv, t_stack *a)
 {
-	t_node *new_node;
-	int	i;
+	t_node	*new_node;
+	int		i;
 
 	i = 1;
 	while (argv[i])

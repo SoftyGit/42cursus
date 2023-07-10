@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 09:37:44 by yongjale          #+#    #+#             */
-/*   Updated: 2023/05/22 11:05:33 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/09 13:12:24 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	main(int argc, char **argv)
 {
 	pid_t	server_pid;
-	
+
 	if (argc != 3)
 		return (ft_printf("INVALID PARAMETERS"));
 	if (ft_strlen(argv[1]) > 5)
@@ -44,7 +44,7 @@ void	send_pidsignal(int client_pid)
 {
 	int	index;
 	int	current_bit;
-	
+
 	index = 0;
 	while (index < 17)
 	{
@@ -60,7 +60,7 @@ void	send_pidsignal(int client_pid)
 
 void	send_bitsignal(int server_pid, char send_byte)
 {
-	int index;
+	int	index;
 	int	current_bit;
 
 	index = 0;

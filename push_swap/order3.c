@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 10:16:14 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/06 10:25:15 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/10 11:23:35 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	rra(t_stack *a)
 {
-	t_node  *first;
-	t_node  *lastsecond;
-	t_node  *last;
+	t_node	*first;
+	t_node	*lastsecond;
+	t_node	*last;
 
 	if (a->top == a->bot)
 		return ;
@@ -30,13 +30,14 @@ void	rra(t_stack *a)
 		lastsecond->next = NULL;
 	a->top = last;
 	a->bot = lastsecond;
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack *b)
 {
-	t_node  *first;
-	t_node  *lastsecond;
-	t_node  *last;
+	t_node	*first;
+	t_node	*lastsecond;
+	t_node	*last;
 
 	if (b->top == b->bot)
 		return ;
@@ -50,10 +51,12 @@ void	rrb(t_stack *b)
 		lastsecond->next = NULL;
 	b->top = last;
 	b->bot = lastsecond;
+	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack *a, t_stack *b)
 {
 	rra(a);
-	rrb(b);	
+	rrb(b);
+	write(1, "rrr\n", 4);
 }

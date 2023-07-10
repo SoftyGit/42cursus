@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 23:11:40 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/06 10:25:44 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/10 11:22:23 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ORDER_H
 
 # include "ps.h"
+# include <unistd.h>
 
 void	sa(t_stack	*a);
 void	sb(t_stack	*b);
