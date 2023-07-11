@@ -8,7 +8,8 @@ SRCS =	main.c\
 		order1.c\
 		order2.c\
 		order3.c\
-		sort.c\
+		sort1.c\
+		sort2.c\
 		test.c
 
 OBJS = ${SRCS:.c=.o}
@@ -18,7 +19,7 @@ all: ${NAME}
 bonus : 
 
 ${NAME}:
-	${CC} ${SRCS} -o ${NAME}
+	${CC} ${CFLAG} ${SRCS} -o ${NAME}
 
 %.o : %.c
 	$(CC) $(CFLAG) -c $< -o $@ -I.

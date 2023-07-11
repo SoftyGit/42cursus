@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 21:34:08 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/11 11:57:04 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/11 12:44:20 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 	check(argv, &a);
 	assign(&a);
 	sortlength(&a, &b);
+	exit(0);
 }
 
 static void	initialize(t_stack *a, t_stack *b)

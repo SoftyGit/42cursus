@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 10:16:14 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/10 11:23:35 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/11 13:05:13 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	rra(t_stack *a)
 	if (a->top == a->bot)
 		return ;
 	first = a->top;
-	lastsecond = last->prev;
 	last = a->bot;
+	lastsecond = last->prev;
 	first->prev = last;
 	last->next = first;
 	last->prev = NULL;
@@ -42,8 +42,8 @@ void	rrb(t_stack *b)
 	if (b->top == b->bot)
 		return ;
 	first = b->top;
-	lastsecond = last->prev;
 	last = b->bot;
+	lastsecond = last->prev;
 	first->prev = last;
 	last->next = first;
 	last->prev = NULL;

@@ -1,47 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   sort2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/10 11:12:51 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/11 12:15:02 by yongjale         ###   ########.fr       */
+/*   Created: 2023/07/11 12:52:19 by yongjale          #+#    #+#             */
+/*   Updated: 2023/07/11 12:59:39 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sort.h"
-#include "order.h"
 
-void	sortlength(t_stack *a, t_stack *b)
+void	sort5(t_stack *a, t_stack *b)
 {
-	if (a->length == 2)
-		sort2(a, b);
-	else if (a->length == 3)
-		sort3(a, b);
-}
+	int	i;
 
-void	sort2(t_stack *a, t_stack *b)
-{
-	if (a->top->num > a->bot->num)
-		ra(a);
-}
-
-void	sort3(t_stack *a, t_stack *b)
-{
-	if (a->top->num > a->top->next->num)
+	i = 1;
+	while (i <= a->length)
 	{
-		ra(a);
-		if (a->top->num > a->top->next->num)
-			sa(a);
-	}
-	else
-	{
-		if (a->bot->prev->num > a->bot->num)
+		if (a->top->num <= i)
 		{
-			ra(a);
-			sa(a);
-			rra(a);
+			pb(a, b);
+			i++;
 		}
+		else if (a->top->num <= CHUNK + i)
+		{
+			pb(a, b);
+			rb(b);
+			i++;
+		}
+		else
+			ra(a);
 	}
 }

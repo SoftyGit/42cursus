@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 21:36:40 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/10 11:20:12 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/11 13:08:32 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PS_H
 
 # define INT_MAX 2147483647
+# include <unistd.h>
+# include <stdlib.h>
 
 typedef struct	s_node
 {
