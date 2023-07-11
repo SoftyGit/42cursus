@@ -6,13 +6,14 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 21:34:08 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/09 13:09:36 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/11 11:57:04 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 #include "err.h"
 #include "ps.h"
+#include "sort.h"
 #include "test.h"
 
 static void	initialize(t_stack *a, t_stack *b);
@@ -29,11 +30,8 @@ int	main(int argc, char **argv)
 		ps_error();
 	initialize(&a, &b);
 	check(argv, &a);
-	ps_lstiter(a.top, ps_printer);
 	assign(&a);
-	ps_lstiter(a.top, ps_printer);
-	exit(0);
-	ps_lstreviter(a.bot, ps_printer);
+	sortlength(&a, &b);
 }
 
 static void	initialize(t_stack *a, t_stack *b)

@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 23:03:24 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/10 11:23:00 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/11 12:12:53 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,28 +53,34 @@ void	ss(t_stack	*a, t_stack	*b)
 	write(1, "ss\n", 3);
 }
 
-void	pa(t_stack	*a, int data)
-{
-	t_node	*top;
-
-	top = a->top;
-	a->top = (t_node *)malloc(sizeof(t_node));
-	a->top->data = data;
-	a->top->prev = NULL;
-	a->top->next = top;
-	top->prev = a->top;
-	write(1, "pa\n", 3);
-}
-
-void	pb(t_stack	*b, int data)
+void	pa(t_stack	*a, t_stack *b)
 {
 	t_node	*top;
 
 	top = b->top;
-	b->top = (t_node *)malloc(sizeof(t_node));
-	b->top->data = data;
-	b->top->prev = NULL;
-	b->top->next = top;
-	top->prev = b->top;
+	if (!top)
+		return ;
+	if (top->next)
+		top->next->prev = NULL;
+	b->top = top->next;
+	top->next = a->top;
+	a->top->prev = top;
+	a->top = top;
+	write(1, "pa\n", 3);
+}
+
+void	pb(t_stack	*a, t_stack *b)
+{
+	t_node	*top;
+
+	top = a->top;
+	if (!top)
+		return ;
+	if (top->next)
+		top->next->prev = NULL;
+	a->top = top->next;
+	top->next = b->top;
+	b->top->prev = top;
+	b->top = top;
 	write(1, "pb\n", 3);
 }
