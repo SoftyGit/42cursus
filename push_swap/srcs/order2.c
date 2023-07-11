@@ -1,62 +1,66 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   order3.c                                           :+:      :+:    :+:   */
+/*   order2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 10:16:14 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/11 13:05:13 by yongjale         ###   ########.fr       */
+/*   Created: 2023/07/06 08:52:56 by yongjale          #+#    #+#             */
+/*   Updated: 2023/07/11 17:28:23 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "order.h"
 
-void	rra(t_stack *a)
+void	ra(t_stack *a)
 {
 	t_node	*first;
-	t_node	*lastsecond;
+	t_node	*second;
 	t_node	*last;
 
+	write(1, "ra\n", 3);
 	if (a->top == a->bot)
 		return ;
 	first = a->top;
+	second = first->next;
 	last = a->bot;
-	lastsecond = last->prev;
-	first->prev = last;
 	last->next = first;
-	last->prev = NULL;
-	if (lastsecond != last)
-		lastsecond->next = NULL;
-	a->top = last;
-	a->bot = lastsecond;
-	write(1, "rra\n", 4);
+	first->prev = last;
+	first->next = NULL;
+	if (second != last)
+		second->prev = NULL;
+	else
+		last->prev = NULL;
+	a->top = second;
+	a->bot = first;
 }
 
-void	rrb(t_stack *b)
+void	rb(t_stack *b)
 {
 	t_node	*first;
-	t_node	*lastsecond;
+	t_node	*second;
 	t_node	*last;
 
+	write(1, "rb\n", 3);
 	if (b->top == b->bot)
 		return ;
 	first = b->top;
+	second = first->next;
 	last = b->bot;
-	lastsecond = last->prev;
-	first->prev = last;
 	last->next = first;
-	last->prev = NULL;
-	if (lastsecond != last)
-		lastsecond->next = NULL;
-	b->top = last;
-	b->bot = lastsecond;
-	write(1, "rrb\n", 4);
+	first->prev = last;
+	first->next = NULL;
+	if (second != last)
+		second->prev = NULL;
+	else
+		last->prev = NULL;
+	b->top = second;
+	b->bot = first;
 }
 
-void	rrr(t_stack *a, t_stack *b)
+void	rr(t_stack *a, t_stack *b)
 {
-	rra(a);
-	rrb(b);
-	write(1, "rrr\n", 4);
+	ra(a);
+	ra(b);
+	write(1, "rr\n", 3);
 }

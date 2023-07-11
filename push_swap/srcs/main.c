@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 21:34:08 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/11 12:44:20 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/11 20:25:30 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "err.h"
 #include "ps.h"
 #include "sort.h"
-#include "test.h"
 
 static void	initialize(t_stack *a, t_stack *b);
 static void	dup_check(int data, t_node *cur_node);
@@ -64,17 +63,17 @@ static void	check(char **argv, t_stack *a)
 	while (argv[i])
 	{
 		new_node = (t_node *)malloc(sizeof(t_node));
-		new_node->prev = NULL;
-		new_node->next = a->top;
+		new_node->next = NULL;
+		new_node->prev = a->bot;
 		new_node->data = ps_atoi(argv[i]);
 		new_node->num = -1;
 		a->length++;
 		dup_check(new_node->data, a->top);
-		if (a->top)
-			a->top->prev = new_node;
-		if (!a->bot)
-			a->bot = new_node;
-		a->top = new_node;
+		if (a->bot)
+			a->bot->next = new_node;
+		if (!a->top)
+			a->top = new_node;
+		a->bot = new_node;
 		i++;
 	}
 }

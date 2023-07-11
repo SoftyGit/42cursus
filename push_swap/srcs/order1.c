@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 23:03:24 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/11 12:12:53 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/11 22:34:50 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,14 @@ void	pa(t_stack	*a, t_stack *b)
 		return ;
 	if (top->next)
 		top->next->prev = NULL;
+	else
+		b->bot = NULL;
 	b->top = top->next;
 	top->next = a->top;
-	a->top->prev = top;
+	if (a->top)
+		a->top->prev = top;
+	else
+		a->bot = top;
 	a->top = top;
 	write(1, "pa\n", 3);
 }
@@ -78,9 +83,14 @@ void	pb(t_stack	*a, t_stack *b)
 		return ;
 	if (top->next)
 		top->next->prev = NULL;
+	else
+		a->bot = NULL;
 	a->top = top->next;
 	top->next = b->top;
-	b->top->prev = top;
+	if (b->top)
+		b->top->prev = top;
+	else
+		b->bot = top;
 	b->top = top;
 	write(1, "pb\n", 3);
 }

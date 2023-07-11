@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 10:33:45 by yongjale          #+#    #+#             */
-/*   Updated: 2023/06/28 10:47:20 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/11 20:52:20 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	ps_atoi(const char *str)
 		str++;
 	if (*str == '+' || *str == '-')
 		sign = ',' - *(str++);
+	if (!ps_isdigit(*str))
+		ps_error();
 	while (ps_isdigit(*str))
 	{
 		ret = ret * 10 + (*(str++) - '0');

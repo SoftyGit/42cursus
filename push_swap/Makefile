@@ -1,16 +1,15 @@
 NAME = push_swap
 CC = CC
-CFLAG = -Wall -Wextra -Werror -fsanitize=address
+CFLAG = -Wall -Wextra -Werror
 
-SRCS =	main.c\
-		lib.c\
-		err.c\
-		order1.c\
-		order2.c\
-		order3.c\
-		sort1.c\
-		sort2.c\
-		test.c
+SRCS =	srcs/main.c\
+		srcs/lib.c\
+		srcs/err.c\
+		srcs/order1.c\
+		srcs/order2.c\
+		srcs/order3.c\
+		srcs/sort1.c\
+		srcs/sort2.c
 
 OBJS = ${SRCS:.c=.o}
 

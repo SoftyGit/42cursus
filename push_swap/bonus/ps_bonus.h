@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps.h                                               :+:      :+:    :+:   */
+/*   ps_bonus.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 21:36:40 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/11 13:08:32 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/11 22:40:40 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PS_H
-# define PS_H
+#ifndef PS_BONUS_H
+# define PS_BONUS_H
 
 # define INT_MAX 2147483647
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef struct	s_node
+typedef struct s_node
 {
 	int				num;
 	int				data;
@@ -25,11 +25,11 @@ typedef struct	s_node
 	struct s_node	*next;
 }t_node;
 
-typedef struct	s_stack
+typedef struct s_stack
 {
 	struct s_node	*top;
 	struct s_node	*bot;
-	int	length;
+	int				length;
 }t_stack;
 
 #endif
