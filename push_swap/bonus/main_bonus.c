@@ -6,14 +6,14 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 21:34:08 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/11 22:41:30 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/12 08:50:29 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib.h"
-#include "err.h"
+#include "lib_bonus.h"
+#include "err_bonus.h"
 #include "ps_bonus.h"
-#include "sort.h"
+#include "input_bonus.h"
 
 static void	initialize(t_stack *a, t_stack *b);
 static void	dup_check(int data, t_node *cur_node);
@@ -26,11 +26,11 @@ int	main(int argc, char **argv)
 	t_stack	b;
 
 	if (argc == 1)
-		ps_error();
+		exit(0);
 	initialize(&a, &b);
 	check(argv, &a);
 	assign(&a);
-	sortlength(&a, &b);
+	get_input(&a, &b);
 	exit(0);
 }
 

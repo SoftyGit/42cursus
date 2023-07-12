@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   order3.c                                           :+:      :+:    :+:   */
+/*   order3_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 10:16:14 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/12 08:45:55 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/12 08:49:08 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "order.h"
+#include "order_bonus.h"
 
-void	rra(t_stack *a, int mode)
+void	rra(t_stack *a)
 {
 	t_node	*first;
 	t_node	*lastsecond;
 	t_node	*last;
 
-	if (mode == 1)
-		write(1, "rra\n", 4);
 	if (a->top == a->bot)
 		return ;
 	first = a->top;
@@ -36,14 +34,12 @@ void	rra(t_stack *a, int mode)
 	a->bot = lastsecond;
 }
 
-void	rrb(t_stack *b, int mode)
+void	rrb(t_stack *b)
 {
 	t_node	*first;
 	t_node	*lastsecond;
 	t_node	*last;
 
-	if (mode == 1)
-		write(1, "rrb\n", 4);
 	if (b->top == b->bot)
 		return ;
 	first = b->top;
@@ -62,9 +58,8 @@ void	rrb(t_stack *b, int mode)
 
 void	rrr(t_stack *a, t_stack *b)
 {
-	rra(a, 0);
-	rrb(b, 0);
-	write(1, "rrr\n", 4);
+	rra(a);
+	rrb(b);
 }
 
 void	repeat_rb(t_stack *b, int num)
@@ -74,7 +69,7 @@ void	repeat_rb(t_stack *b, int num)
 	i = 0;
 	while (i < num)
 	{
-		rb(b, 1);
+		rb(b);
 		i++;
 	}
 }
@@ -86,7 +81,7 @@ void	repeat_rrb(t_stack *b, int num)
 	i = 0;
 	while (i < num)
 	{
-		rrb(b, 1);
+		rrb(b);
 		i++;
 	}
 }

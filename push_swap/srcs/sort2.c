@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 12:52:19 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/11 22:29:22 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/12 08:45:52 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	sort4(t_stack *a, t_stack *b)
 	max_index = find_num(a, 0);
 	if (max_index <= 2)
 		while (i++ < max_index)
-			ra(a);
+			ra(a, 1);
 	else
 		while (i++ < 4 - max_index)
-			rra(a);
+			rra(a, 1);
 	pb(a, b);
 	sort3(a);
 	pa(a, b);
@@ -41,14 +41,14 @@ void	sort5(t_stack *a, t_stack *b)
 	i = 0;
 	if (index <= 2)
 		while (i++ < index)
-			ra(a);
+			ra(a, 1);
 	else
 		while (i++ < 5 - index)
-			rra(a);
+			rra(a, 1);
 	pb(a, b);
 	sort4(a, b);
 	pa(a, b);
-	ra(a);
+	ra(a, 1);
 }
 
 void	sort_a2b(t_stack *a, t_stack *b, int chunk)
@@ -66,11 +66,11 @@ void	sort_a2b(t_stack *a, t_stack *b, int chunk)
 		else if (a->top->num <= chunk + i)
 		{
 			pb(a, b);
-			rb(b);
+			rb(b, 1);
 			i++;
 		}
 		else
-			ra(a);
+			ra(a, 1);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 11:12:51 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/11 22:34:47 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/12 10:04:17 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,34 +36,34 @@ void	sortlength(t_stack *a, t_stack *b)
 void	sort2(t_stack *a)
 {
 	if (a->top->num > a->bot->num)
-		ra(a);
+		ra(a, 1);
 }
 
 void	sort3(t_stack *a)
 {
 	if (a->top->num < a->top->next->num)
 	{
-		if (a->top->num < a->bot->num)
+		if ((a->top->num < a->bot->num) && (a->top->next->num > a->bot->num))
 		{
-			sa(a);
-			ra(a);
+			sa(a, 1);
+			ra(a, 1);
 		}
-		else
-			rra(a);
+		else if ((a->top->next->num > a->bot->num))
+			rra(a, 1);
 	}
 	else
 	{
 		if (a->top->next->num > a->bot->num)
 		{
-			sa(a);
-			rra(a);
+			sa(a, 1);
+			rra(a, 1);
 		}
 		else
 		{
 			if (a->top->num > a->bot->num)
-				ra(a);
+				ra(a, 1);
 			else
-				sa(a);
+				sa(a, 1);
 		}
 	}
 }

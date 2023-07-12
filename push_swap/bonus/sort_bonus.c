@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.h                                             :+:      :+:    :+:   */
+/*   sort_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/10 11:13:05 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/12 08:45:54 by yongjale         ###   ########.fr       */
+/*   Created: 2023/07/10 11:12:51 by yongjale          #+#    #+#             */
+/*   Updated: 2023/07/12 09:49:44 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_H
-# define SORT_H
+#include "sort_bonus.h"
 
-# include "ps.h"
-# include "order.h"
+int	check_sort(t_stack *a)
+{
+	t_node	*cur_node;
+	int		last_value;
 
-void	sortlength(t_stack *a, t_stack *b);
-void	sort2(t_stack *a);
-void	sort3(t_stack *a);
-void	sort4(t_stack *a, t_stack *b);
-void	sort5(t_stack *a, t_stack *b);
-void	sort_a2b(t_stack *a, t_stack *b, int chunk);
-void	sort_b2a(t_stack *a, t_stack *b);
-
-#endif  
+	last_value = a->top->num;
+	cur_node = a->top;
+	while (cur_node)
+	{
+		if (last_value <= cur_node->num)
+			last_value = cur_node->num;
+		else
+			return (0);
+		cur_node = cur_node->next;
+	}
+	return (1);
+}

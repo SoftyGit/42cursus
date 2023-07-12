@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   order2.c                                           :+:      :+:    :+:   */
+/*   order2_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 08:52:56 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/12 08:45:55 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/12 08:50:56 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "order.h"
+#include "order_bonus.h"
 
-void	ra(t_stack *a, int mode)
+void	ra(t_stack *a)
 {
 	t_node	*first;
 	t_node	*second;
 	t_node	*last;
 
-	if (mode == 1)
-		write(1, "ra\n", 3);
 	if (a->top == a->bot)
 		return ;
 	first = a->top;
@@ -36,14 +34,12 @@ void	ra(t_stack *a, int mode)
 	a->bot = first;
 }
 
-void	rb(t_stack *b, int mode)
+void	rb(t_stack *b)
 {
 	t_node	*first;
 	t_node	*second;
 	t_node	*last;
 
-	if (mode == 1)
-		write(1, "rb\n", 3);
 	if (b->top == b->bot)
 		return ;
 	first = b->top;
@@ -62,7 +58,6 @@ void	rb(t_stack *b, int mode)
 
 void	rr(t_stack *a, t_stack *b)
 {
-	ra(a, 0);
-	ra(b, 0);
-	write(1, "rr\n", 3);
+	ra(a);
+	ra(b);
 }

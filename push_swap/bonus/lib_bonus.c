@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib.c                                              :+:      :+:    :+:   */
+/*   lib_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 10:33:45 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/12 08:47:39 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/12 08:54:27 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib.h"
+#include "lib_bonus.h"
 
 int	ps_isdigit(int c)
 {
@@ -59,4 +59,20 @@ size_t	ps_strlen(const char *s)
 	while (*(s++))
 		len++;
 	return (len);
+}
+
+int	ps_strncmp(const char *s1, const char *s2, size_t n)
+{
+	while (n--)
+	{
+		if (*(unsigned char *)s1 > *(unsigned char *)s2)
+			return (1);
+		else if (*(unsigned char *)s1 < *(unsigned char *)s2)
+			return (-1);
+		else if (!*s1)
+			return (0);
+		s1++;
+		s2++;
+	}
+	return (0);
 }

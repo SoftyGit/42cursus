@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   order1.c                                           :+:      :+:    :+:   */
+/*   order1_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 23:03:24 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/12 08:45:56 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/12 09:37:02 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "order.h"
+#include "order_bonus.h"
 
-void	sa(t_stack	*a, int mode)
+void	sa(t_stack	*a)
 {
 	t_node	*first;
 	t_node	*second;
@@ -26,11 +26,9 @@ void	sa(t_stack	*a, int mode)
 	second->prev = NULL;
 	second->next = first;
 	a->top = second;
-	if (mode == 1)
-		write(1, "sa\n", 3);
 }
 
-void	sb(t_stack	*b, int mode)
+void	sb(t_stack	*b)
 {
 	t_node	*first;
 	t_node	*second;
@@ -44,15 +42,12 @@ void	sb(t_stack	*b, int mode)
 	second->prev = NULL;
 	second->next = first;
 	b->top = second;
-	if (mode == 1)
-		write(1, "sb\n", 3);
 }
 
 void	ss(t_stack	*a, t_stack	*b)
 {
-	sa(a, 0);
-	sb(b, 0);
-	write(1, "ss\n", 3);
+	sa(a);
+	sb(b);
 }
 
 void	pa(t_stack	*a, t_stack *b)
@@ -73,7 +68,6 @@ void	pa(t_stack	*a, t_stack *b)
 	else
 		a->bot = top;
 	a->top = top;
-	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack	*a, t_stack *b)
@@ -94,5 +88,4 @@ void	pb(t_stack	*a, t_stack *b)
 	else
 		b->bot = top;
 	b->top = top;
-	write(1, "pb\n", 3);
 }

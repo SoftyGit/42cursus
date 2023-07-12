@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.h                                             :+:      :+:    :+:   */
+/*   lib_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/10 11:13:05 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/12 08:45:54 by yongjale         ###   ########.fr       */
+/*   Created: 2023/06/28 10:33:29 by yongjale          #+#    #+#             */
+/*   Updated: 2023/07/12 09:59:07 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_H
-# define SORT_H
+#ifndef LIB_BONUS_H
+# define LIB_BONUS_H
 
-# include "ps.h"
-# include "order.h"
+# include "err_bonus.h"
 
-void	sortlength(t_stack *a, t_stack *b);
-void	sort2(t_stack *a);
-void	sort3(t_stack *a);
-void	sort4(t_stack *a, t_stack *b);
-void	sort5(t_stack *a, t_stack *b);
-void	sort_a2b(t_stack *a, t_stack *b, int chunk);
-void	sort_b2a(t_stack *a, t_stack *b);
+int		ps_atoi(const char *str);
+int		ps_isdigit(int c);
+size_t	ps_strlen(const char *s);
+int		ps_strncmp(const char *s1, const char *s2, size_t n);
 
-#endif  
+#endif
