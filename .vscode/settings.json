@@ -15,5 +15,6 @@
         "stdio.h": "c",
         "get_next_line_bonus.h": "c"
     },
-    "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.errorSquiggles": "disabled",
+    "cmake.configureOnOpen": true
 }
