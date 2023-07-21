@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps.h                                               :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/23 21:36:40 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/22 01:21:59 by yongjale         ###   ########.fr       */
+/*   Created: 2023/07/22 01:41:58 by yongjale          #+#    #+#             */
+/*   Updated: 2023/07/22 01:45:28 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PS_H
-# define PS_H
-
-# define INT_MAX 2147483647
-# include <unistd.h>
-# include <stdlib.h>
-
-typedef struct s_node
+static	int	ph_isblank(int c)
 {
-	int				num;
-	int				data;
-	struct s_node	*prev;
-	struct s_node	*next;
-}t_node;
+	if (c == 32 || (c >= 9 && c <= 13))
+		return (1);
+	return (0);
+}
 
-typedef struct s_stack
+int	ph_atoi(const char *str)
 {
-	struct s_node	*top;
-	struct s_node	*bot;
-	int				length;
-}t_stack;
+	size_t	ret;
+	char	sign;
 
-#endif
+	ret = 0;
+	sign = 1;
+
+	while (ft_isblank(*str))
+		str++;
+	if (*str == '+' || *str == '-')
+		sign = ',' - *(str++);
+	while (ft_isdigit(*str))
+		ret = ret * 10 + (*(str++) - '0');
+	return (sign * ret);
+}

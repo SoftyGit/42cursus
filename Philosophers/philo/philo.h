@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps.h                                               :+:      :+:    :+:   */
+/*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/23 21:36:40 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/22 01:21:59 by yongjale         ###   ########.fr       */
+/*   Created: 2023/07/22 01:12:02 by yongjale          #+#    #+#             */
+/*   Updated: 2023/07/22 02:04:21 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PS_H
-# define PS_H
+#ifndef PHILO_H
+# define PHILO_H
 
-# define INT_MAX 2147483647
-# include <unistd.h>
-# include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <pthread.h>
 
-typedef struct s_node
+typedef struct s_data
 {
-	int				num;
-	int				data;
-	struct s_node	*prev;
-	struct s_node	*next;
-}t_node;
+	int				num_philo;
+	int				time_die;
+	int				time_eat;
+	int				time_sleep;
+	int				num_times_philo_must_eat;
+	int				begin_time;
+	pthread_mutex_t message;
+	pthread_mutex_t *forks;
+}t_data;
 
-typedef struct s_stack
-{
-	struct s_node	*top;
-	struct s_node	*bot;
-	int				length;
-}t_stack;
+enum e_ERROR{
+	INVALID_VALUE = 1,
+	FAILURE_MUTEX = 77
+};
 
 #endif
