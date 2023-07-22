@@ -14,7 +14,6 @@
 # define UTILS_H
 
 # include <stdlib.h>
-# include <time.h>
 
 int	ph_atoi(const char *str);
 
