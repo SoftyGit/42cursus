@@ -43,3 +43,8 @@ int	ph_atoi(const char *str)
 		ret = ret * 10 + (*(str++) - '0');
 	return (sign * ret);
 }
+
+int	ph_time()
+{
+
+}
