@@ -14,7 +14,14 @@
 # define UTILS_H
 
 # include <stdlib.h>
+# include <time.h>
+
+typdef struct s_timeval
+{
+    time_t		tv_sec;
+    suseconds_t	tv_usec;
+}t_timeval;
 
 int	ph_atoi(const char *str);
-
+long long int	ph_time(void);
 #endif

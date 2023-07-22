@@ -18,6 +18,7 @@ int	init_cycle(t_ph *ph)
 	int	num;
 
 	turn = 1;
+	ph->begin_time = ph_time();
 	while (1)
 	{
 		num = 0;
@@ -47,6 +48,6 @@ void	get_sleep(t_ph* ph, int turn)
 	num = 0;
 	while (num < ph->num_philo)
 	{
-		
+		 
 	}
 }

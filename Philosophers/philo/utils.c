@@ -44,7 +44,10 @@ int	ph_atoi(const char *str)
 	return (sign * ret);
 }
 
-int	ph_time()
+long long int	ph_time(void)
 {
+	t_timeval	time;
 
+	gettimeofday(&time, NULL);
+	return (time->tvusec + time->sec * 1000)
 }

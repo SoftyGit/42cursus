@@ -17,7 +17,6 @@
 #include <string.h>
 #include <pthread.h>
 #include <stdlib.h>
-#include <time.h>
 
 typedef struct s_ph
 {
@@ -30,11 +29,6 @@ typedef struct s_ph
 	pthread_mutex_t message;
 	pthread_mutex_t *forks;
 }t_ph;
-
-typedef struct s_time
-{
-	time_t
-}
 
 enum e_ERROR{
 	INVALID_ARGUMENTS = 1, 
