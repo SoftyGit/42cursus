@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 01:12:02 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/22 02:12:56 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/22 15:03:19 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <pthread.h>
+#include <stdlib.h>
 
-typedef struct s_data
+typedef struct s_ph
 {
 	int				num_philo;
 	int				time_die;
@@ -27,7 +28,7 @@ typedef struct s_data
 	int				begin_time;
 	pthread_mutex_t message;
 	pthread_mutex_t *forks;
-}t_data;
+}t_ph;
 
 enum e_ERROR{
 	INVALID_ARGUMENTS = 1, 

@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   cycle.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/22 01:42:19 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/22 14:55:35 by yongjale         ###   ########.fr       */
+/*   Created: 2023/07/22 14:51:41 by yongjale          #+#    #+#             */
+/*   Updated: 2023/07/22 14:52:56 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef CYCLE_H
+# define CYCLE_H
 
-# include <stdlib.h>
+# include "philo.h"
 
-int	ph_atoi(const char *str);
+int	init_cycle(t_ph *ph);
 
 #endif

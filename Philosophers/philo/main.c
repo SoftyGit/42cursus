@@ -6,56 +6,61 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:15:03 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/22 02:17:00 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/22 15:02:36 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include "utils.h"
 #include "errno.h"
+#include "cycle.h"
+
+static int	init_ph(t_ph *ph, char **argv);
+static int	init_mutex(t_ph *ph);
 
 int	main(int argc, char **argv)
 {
-	t_data	data;
+	t_ph	ph;
 	int		errno;
 
-	memset(&data, 0, sizeof(t_data));
-	if (argc != 4 && argc != 5)
+	memset(&ph, 0, sizeof(t_ph));
+	if (argc != 5 && argc != 6)
 		return (ph_error(INVALID_ARGUMENTS));
-	errno = init_data(&data, argv);
+	errno = init_ph(&ph, argv);
 	if (errno)
 		return (ph_error(errno));
+	errno = init_cycle(&ph);	
 }
 
-int	init_data(t_data *data, char **argv)
+static int	init_ph(t_ph *ph, char **argv)
 {
-	data->num_philo = ph_atoi(argv[1]);
-	data->time_die = ph_atoi(argv[2]);
-	data->time_eat = ph_atoi(argv[3]);
-	data->time_sleep = ph_atoi(argv[4]);
-	data->num_times_philo_must_eat = 0;
+	ph->num_philo = ph_atoi(argv[1]);
+	ph->time_die = ph_atoi(argv[2]);
+	ph->time_eat = ph_atoi(argv[3]);
+	ph->time_sleep = ph_atoi(argv[4]);
+	ph->num_times_philo_must_eat = 0;
 	if (argv[5])
-		data->num_times_philo_must_eat = ph_atoi(argv[5]);
-	if (data->num_philo <= 0 || data->time_die <= 0 || data->time_eat <= 0 
-		|| data->time_sleep <=0 || data->num_times_philo_must_eat < 0)
+		ph->num_times_philo_must_eat = ph_atoi(argv[5]);
+	if (ph->num_philo <= 0 || ph->time_die <= 0 || ph->time_eat <= 0 
+		|| ph->time_sleep <=0 || ph->num_times_philo_must_eat < 0)
 		return (INVALID_VALUE);
-	if (init_mutex(data))
+	if (init_mutex(ph))
 		return (FAILURE_MUTEX);
-	
+	return (0);
 }
 
-int	init_mutex(t_data *data)
+static int	init_mutex(t_ph *ph)
 {
 	int	num;
 
-	if (pthread_mutex_init(&(data->message), NULL))
+	if (pthread_mutex_init(&(ph->message), NULL))
 		return (FAILURE_MUTEX);
-	data->forks = malloc(sizeof(pthread_mutex_t) * data->num_philo);
-	if (!data->forks)
+	ph->forks = malloc(sizeof(pthread_mutex_t) * ph->num_philo);
+	if (!ph->forks)
 		return (FAILURE_MUTEX);
 	num = 0;
-	while (num < data->num_philo)
-		if (pthread_mutex_init(data->forks[i++], NULL))
+	while (num < ph->num_philo)
+		if (pthread_mutex_init(&(ph->forks[num++]), NULL))
 			return (FAILURE_MUTEX);
 	return (0);
 }

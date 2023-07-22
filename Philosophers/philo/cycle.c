@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   cycle.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/22 01:42:19 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/22 14:55:35 by yongjale         ###   ########.fr       */
+/*   Created: 2023/07/22 14:49:01 by yongjale          #+#    #+#             */
+/*   Updated: 2023/07/22 15:06:59 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "cycle.h"
 
-# include <stdlib.h>
+int	init_cycle(t_ph *ph)
+{
+	int	turn;
+	int	num;
 
-int	ph_atoi(const char *str);
-
-#endif
+	turn = 1;
+	while (1)
+	{
+		num = 0;
+		while (num < ph->num_philo)
+		{
+			if (num % 2 == turn && !(turn && num == ph->num_philo - 1)) // 홀수 & 짝수 구분 (홀수이면서 마지막 값은 안됨)
+				
+		}
+	}
+}
