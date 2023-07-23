@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:15:03 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/23 13:17:04 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:24:52 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static int	init_mutex(t_ph *ph);
 
 int	main(int argc, char **argv)
 {
-	t_ph	ph;
 	int		errno;
+	t_ph	ph;
 
 	memset(&ph, 0, sizeof(t_ph));
 	if (argc != 5 && argc != 6)
@@ -29,7 +29,9 @@ int	main(int argc, char **argv)
 	errno = init_ph(&ph, argv);
 	if (errno)
 		return (ph_error(errno));
-	errno = init_cycle(&ph);	
+	errno = init_cycle(&ph);
+	if (errno)
+		return (ph_error(errno));
 }
 
 static int	init_ph(t_ph *ph, char **argv)
@@ -44,6 +46,7 @@ static int	init_ph(t_ph *ph, char **argv)
 	if (ph->num_philo <= 0 || ph->time_die <= 0 || ph->time_eat <= 0 
 		|| ph->time_sleep <=0 || ph->num_times_philo_must_eat < 0)
 		return (INVALID_VALUE);
+	ph->philo = malloc(sizeof(t_th) * ph->num_philo);
 	if (init_mutex(ph))
 		return (FAILURE_MUTEX);
 	return (0);
