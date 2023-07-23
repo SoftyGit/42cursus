@@ -1,7 +1,7 @@
 NAME = philo
 
 CC = CC
-CFLAG = -Wall -Wextra -Werror -fsanitize=address
+CFLAG = -Wall -Wextra -Werror
 SRCS =	main.c\
 		cycle.c\
 		errno.c\
