@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 01:41:58 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/22 14:57:03 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/23 13:16:15 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int	ph_atoi(const char *str)
 
 long long int	ph_time(void)
 {
-	t_timeval	time;
+	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	return (time->tvusec + time->sec * 1000)
+	return (time.tv_sec * 1000 + time.tv_usec);
 }

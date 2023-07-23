@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 01:12:02 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/22 15:03:19 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/23 13:17:12 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_ph
 	int				time_eat;
 	int				time_sleep;
 	int				num_times_philo_must_eat;
-	int				begin_time;
+	long long int	begin_time;
 	pthread_mutex_t message;
 	pthread_mutex_t *forks;
 }t_ph;
