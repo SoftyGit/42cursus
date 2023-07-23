@@ -6,107 +6,84 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:49:01 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/23 15:28:13 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/24 02:08:38 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cycle.h"
 #include "utils.h"
 
-static void	get_eat(t_ph* ph, int num);
-static void	get_sleep(t_ph* ph, int turn);
+static void	get_eat(t_ph *ph, t_th* thread, int num);
+static void	get_sleep(t_ph *ph, t_th* thread, int num);
+static void	get_print(t_ph* ph, long long int time, int num, char* msg);
 
-int	init_cycle(t_ph *ph)
+int	init_cycle(t_ph *ph, t_th *thread)
 {
-	int	num;
-
-	ph->begin_time = ph_time();
-	while (1)
-	{
-		num = 0;
-		while (num < ph->num_philo)
-		{
-			if (pthread_create(&ph->philo[num].thread, NULL, init_thread, ph))
-				return (FAILURE_THREAD);
-			num += 2;
-		}
-		num = 1;
-		while (num < ph->num_philo)
-		{
-			if (pthread_create(&ph->philo[num].thread, NULL, init_thread, ph))
-				return (FAILURE_THREAD);
-			num += 2;
-		}
-		return (0);
-	}
-}
-
-/*
-int	init_cycle(t_ph *ph)
-{
-	int	turn;
-	int	num;
-
-	turn = 1;
-	ph->begin_time = ph_time();
-	while (1)
-	{
-		num = 0;
-		while (num < ph->num_philo)
-		{
-			if (pthread_create(&ph->philo[num].thread, NULL, get_eat, ph))
-				return (FAILURE_THREAD);
-			if (num % 2 == turn && !(turn && num == ph->num_philo - 1)) // 홀수 & 짝수 구분 (홀수이면서 마지막 값은 안됨)
-				get_eat(ph, num);
-			num++;
-		}
-		get_sleep(ph, turn);
-		turn = (turn + 1) % 2;
-		return (0);
-	}
-}
-*/
-
-void	init_thread(t_ph *ph)
-{
-	get_eat(ph)
-}
-
-static void	get_eat(t_ph* ph, int num)
-{
-	long long int	std_time;
-
-	std_time = ph_time();
-	pthread_mutex_lock(&ph->forks[num]);
-	printf("%lld %d has taken a fork\n", std_time - ph->begin_time, num + 1);
-	if (num == ph->num_philo)
-		pthread_mutex_lock(&ph->forks[0]);
-	else
-		pthread_mutex_lock(&ph->forks[num + 1]);
-	printf("%lld %d has taken a fork\n", std_time - ph->begin_time, num + 1);
-	printf("%lld %d is eating\n", std_time - ph->begin_time, num + 1);
-	ph->begin_time += ph_time() - std_time;
-}
-
-static void	get_sleep(t_ph* ph, int turn)
-{
-	long long int	std_time;
 	int	num;
 
 	num = 0;
-	std_time = ph_time();
 	while (num < ph->num_philo)
 	{
-		if (num % 2 == turn && !(turn && num == ph->num_philo - 1))
-		{
-			printf("%lld %d is sleeping\n", std_time - ph->begin_time, num + 1);
-			pthread_mutex_unlock(&ph->forks[num]);
-			if (num == ph->num_philo)
-				pthread_mutex_unlock(&ph->forks[0]);
-			else
-				pthread_mutex_unlock(&ph->forks[num + 1]);
-		}
-		num++;
+		if (pthread_create(&thread[num].thread, NULL, get_action, &thread[num]))
+			return (FAILURE_THREAD);
+		num += 2;
 	}
-	ph->begin_time += ph_time() - std_time;
+	usleep(100);
+	num = 1;
+	while (num < ph->num_philo)
+	{
+		if (pthread_create(&thread[num].thread, NULL, get_action, &thread[num]))
+			return (FAILURE_THREAD);
+		num += 2;
+	}
+	return (0);
+}
+
+void*	get_action(void *arg)
+{
+	t_th	*thread;
+
+	thread = arg;
+	thread->begin_time = ph_time();
+	get_eat(thread->ph, thread, thread->num);
+	ph_sleep(thread, thread->ph->time_eat);
+	get_sleep(thread->ph, thread, thread->num);
+	return (NULL);
+}
+
+static void	get_eat(t_ph *ph, t_th* thread, int num)
+{
+	long long int	std_time;
+	long long int	chk_time;
+
+	std_time = ph_time();
+	pthread_mutex_lock(&ph->forks[num]);
+	chk_time = ph_time();
+	get_print(ph, std_time - thread->begin_time, num + 1, MSG_FORK);
+	if (num == ph->num_philo - 1)
+		pthread_mutex_lock(&ph->forks[0]);
+	else
+		pthread_mutex_lock(&ph->forks[num + 1]);
+	chk_time = ph_time();
+	get_print(ph, std_time - thread->begin_time, num + 1, MSG_FORK);
+}
+
+static void	get_sleep(t_ph *ph, t_th* thread, int num)
+{
+	long long int	std_time;
+
+	std_time = ph_time();
+	if (num == ph->num_philo - 1)
+		pthread_mutex_unlock(&ph->forks[0]);
+	else
+		pthread_mutex_unlock(&ph->forks[num + 1]);
+	pthread_mutex_unlock(&ph->forks[num]);
+	get_print(ph, std_time - thread->begin_time, num + 1, MSG_SLEEP);
+}
+
+static void	get_print(t_ph* ph, long long int time, int num, char* msg)
+{
+	pthread_mutex_lock(&ph->printer);
+	printf("%lld %d %s\n", time, num, msg);
+	pthread_mutex_unlock(&ph->printer);
 }

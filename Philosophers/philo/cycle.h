@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:51:41 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/23 12:44:58 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/24 01:59:35 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "philo.h"
 # include <unistd.h>
 
-int	init_cycle(t_ph *ph);
+int		init_cycle(t_ph *ph, t_th *thread);
+void*	get_action(void *arg);
 
 #endif

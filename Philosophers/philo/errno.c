@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 02:10:13 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/23 13:04:05 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/23 23:28:43 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@ int	ph_error(int errno)
 		printf("INVALID_VALUE\n");
 	else if (errno == FAILURE_MUTEX)
 		printf("FAILURE_MUTEX\n");
+	else if (errno == FAILURE_THREAD)
+		printf("FAILURE_THREAD\n");
 	return (1);
 }

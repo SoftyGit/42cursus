@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 01:12:02 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/23 15:26:12 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/24 01:34:05 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@
 #include <pthread.h>
 #include <stdlib.h>
 
-typedef struct s_th
-{
-	pthread_t thread;
-}t_th;
-
 typedef struct s_ph
 {
 	int				num_philo;
@@ -30,11 +25,17 @@ typedef struct s_ph
 	int				time_eat;
 	int				time_sleep;
 	int				num_times_philo_must_eat;
-	long long int	begin_time;
-	pthread_mutex_t message;
+	pthread_mutex_t printer;
 	pthread_mutex_t *forks;
-	t_th			*philo;
 }t_ph;
+
+typedef struct s_th
+{
+	int				num;
+	long long int	begin_time;
+	pthread_t		thread;
+	t_ph			*ph;
+}t_th;
 
 enum e_ERROR{
 	INVALID_ARGUMENTS = 1, 
@@ -42,5 +43,9 @@ enum e_ERROR{
 	FAILURE_MUTEX = 77,
 	FAILURE_THREAD = 78
 };
+
+# define MSG_SLEEP "is sleeping"
+# define MSG_EAT "is eating"
+# define MSG_FORK "has taken a fork"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 01:42:19 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/23 14:36:24 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/24 00:51:33 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 
 int				ph_atoi(const char *str);
 long long int	ph_time(void);
-void			ph_sleep(t_ph *ph, int wait_time);
+void			ph_sleep(t_th *thread, int wait_time);
 
 #endif

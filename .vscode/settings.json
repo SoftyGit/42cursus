@@ -18,5 +18,8 @@
         "philo.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled",
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "editor.tabSize": 4,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
 }
