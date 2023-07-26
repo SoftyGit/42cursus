@@ -1,11 +1,12 @@
 NAME = philo
 
 CC = CC
-CFLAG = -Wall -Wextra -Werror
+CFLAG = -Wall -Wextra -Werror -fsanitize=thread
 SRCS =	main.c\
 		cycle.c\
 		errno.c\
-		utils.c
+		utils.c\
+		monitor.c
 OBJS = ${SRCS:.c=.o}
 
 all		: ${NAME}

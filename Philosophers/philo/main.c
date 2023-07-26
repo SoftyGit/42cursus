@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:15:03 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/24 01:52:28 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/26 16:05:44 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static int	init_ph(t_ph *ph, t_th **thread, char **argv)
 	ph->num_times_philo_must_eat = 0;
 	if (argv[5])
 		ph->num_times_philo_must_eat = ph_atoi(argv[5]);
+	else
+		ph->num_times_philo_must_eat = INT_MAX;
 	if (ph->num_philo <= 0 || ph->time_die <= 0 || ph->time_eat <= 0 
 		|| ph->time_sleep <=0 || ph->num_times_philo_must_eat < 0)
 		return (INVALID_VALUE);
@@ -81,9 +83,20 @@ static int	init_mutex(t_ph *ph)
 	ph->forks = malloc(sizeof(pthread_mutex_t) * ph->num_philo);
 	if (!ph->forks)
 		return (FAILURE_MUTEX);
+	ph->times = malloc(sizeof(pthread_mutex_t) * ph->num_philo);
+	if (!ph->times)
+	{
+		free(ph->forks);
+		return (FAILURE_MUTEX);
+	}
 	num = 0;
 	while (num < ph->num_philo)
-		if (pthread_mutex_init(&(ph->forks[num++]), NULL))
+	{
+		if (pthread_mutex_init(&(ph->forks[num]), NULL))
 			return (FAILURE_MUTEX);
+		if (pthread_mutex_init(&(ph->times[num]), NULL))
+			return (FAILURE_MUTEX);
+		num++;
+	}
 	return (0);
 }

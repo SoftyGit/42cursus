@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 01:41:58 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/24 00:51:36 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/26 14:51:22 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,14 @@ long long int	ph_time(void)
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	return (time.tv_sec * 1000 + time.tv_usec);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-void	ph_sleep(t_th *thread, int wait_time)
+void	ph_sleep(int wait_time)
 {
 	long long int	std_time;
-	long long int	now_time;
 
 	std_time = ph_time();
-	usleep(wait_time);
-	now_time = ph_time();
-	thread->begin_time += now_time - std_time - wait_time;
+	while (ph_time() - std_time < wait_time)
+		usleep(10);
 }
