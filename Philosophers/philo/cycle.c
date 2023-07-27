@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 14:49:01 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/26 16:48:43 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/27 20:09:40 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "utils.h"
 #include "monitor.h"
 
-static void	get_eat(t_ph *ph, t_th* thread, int num);
-static void	get_sleep(t_ph *ph, t_th* thread, int num);
-static int	get_print(t_th* thread, int num, char* msg);
+static void	get_eat(t_ph *ph, t_th *thread, int num);
+static void	get_sleep(t_ph *ph, t_th *thread, int num);
+static int	get_print(t_th *thread, int num, char *msg);
 
 int	init_cycle(t_ph *ph, t_th *thread)
 {
@@ -46,19 +46,20 @@ int	init_cycle(t_ph *ph, t_th *thread)
 	return (0);
 }
 
-void*	get_action(void *arg)
+void	*get_action(void *arg)
 {
 	t_th	*thread;
 	t_ph	*ph;
-	
+
 	thread = arg;
 	ph = thread->ph;
-	thread->live = 1;	
+	thread->live = 1;
 	thread->count_eat = 0;
 	pthread_mutex_lock(&ph->times[thread->num]);
 	thread->lst_time = ph->begin_time;
 	pthread_mutex_unlock(&ph->times[thread->num]);
-	while (thread->count_eat < ph->num_times_philo_must_eat && thread->lst_time != -1)
+	while (thread->count_eat < ph->num_times_philo_must_eat 
+		&&thread->lst_time != -1)
 	{
 		get_eat(ph, thread, thread->num);
 		ph_sleep(ph->time_eat);
@@ -69,20 +70,20 @@ void*	get_action(void *arg)
 	return (NULL);
 }
 
-static void	get_eat(t_ph *ph, t_th* thread, int num)
+static void	get_eat(t_ph *ph, t_th *thread, int num)
 {
 	pthread_mutex_lock(&ph->times[num]);
 	if (thread->lst_time == -1)
 		return ;
 	pthread_mutex_unlock(&ph->times[num]);
 	pthread_mutex_lock(&ph->forks[num]);
-	if(get_print(thread, num + 1, MSG_RFORK))
+	if (get_print(thread, num + 1, MSG_RFORK))
 	{
 		pthread_mutex_unlock(&ph->forks[num]);
 		return ;
 	}
 	pthread_mutex_lock(&ph->forks[(num + 1) % ph->num_philo]);
-	if(get_print(thread, num + 1, MSG_LFORK))
+	if (get_print(thread, num + 1, MSG_LFORK))
 	{
 		pthread_mutex_unlock(&ph->forks[num]);
 		pthread_mutex_unlock(&ph->forks[(num + 1) % ph->num_philo]);
@@ -92,7 +93,7 @@ static void	get_eat(t_ph *ph, t_th* thread, int num)
 		return ;
 }
 
-static void	get_sleep(t_ph *ph, t_th* thread, int num)
+static void	get_sleep(t_ph *ph, t_th *thread, int num)
 {
 	long long int	time;
 
@@ -109,7 +110,7 @@ static void	get_sleep(t_ph *ph, t_th* thread, int num)
 	get_print(thread, num + 1, MSG_SLEEP);
 }
 
-int	get_print(t_th* thread, int num, char* msg)
+int	get_print(t_th *thread, int num, char *msg)
 {
 	t_ph	*ph;
 

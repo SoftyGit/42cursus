@@ -6,17 +6,17 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 01:12:02 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/26 16:42:49 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/27 20:06:44 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-#include <stdio.h>
-#include <string.h>
-#include <pthread.h>
-#include <stdlib.h>
+# include <stdio.h>
+# include <string.h>
+# include <pthread.h>
+# include <stdlib.h>
 
 typedef struct s_ph
 {
@@ -26,10 +26,10 @@ typedef struct s_ph
 	int				time_sleep;
 	int				num_times_philo_must_eat;
 	long long int	begin_time;
-	pthread_t monitor;
-	pthread_mutex_t printer;
-	pthread_mutex_t *forks;
-	pthread_mutex_t *times;
+	pthread_t		monitor;
+	pthread_mutex_t	printer;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	*times;
 }t_ph;
 
 typedef struct s_th

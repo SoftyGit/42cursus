@@ -6,13 +6,13 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 01:41:58 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/26 14:51:22 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/27 20:10:37 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-static	int	ph_isblank(int c)
+static int	ph_isblank(int c)
 {
 	if (c == 32 || (c >= 9 && c <= 13))
 		return (1);
@@ -34,7 +34,6 @@ int	ph_atoi(const char *str)
 
 	ret = 0;
 	sign = 1;
-
 	while (ph_isblank(*str))
 		str++;
 	if (*str == '+' || *str == '-')

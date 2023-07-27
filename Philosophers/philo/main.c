@@ -6,7 +6,7 @@
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:15:03 by yongjale          #+#    #+#             */
-/*   Updated: 2023/07/26 16:05:44 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/07/27 20:05:58 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	init_ph(t_ph *ph, t_th **thread, char **argv)
 	else
 		ph->num_times_philo_must_eat = INT_MAX;
 	if (ph->num_philo <= 0 || ph->time_die <= 0 || ph->time_eat <= 0 
-		|| ph->time_sleep <=0 || ph->num_times_philo_must_eat < 0)
+		|| ph->time_sleep <= 0 || ph->num_times_philo_must_eat < 0)
 		return (INVALID_VALUE);
 	if (init_thread(ph, thread))
 		return (FAILURE_THREAD);
