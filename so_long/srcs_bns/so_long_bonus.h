@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:56:29 by yongjale          #+#    #+#             */
-/*   Updated: 2023/09/28 13:50:38 by yongjale         ###   ########.fr       */
+/*   Updated: 2023/09/28 13:52:19 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "../mlx/mlx.h"
-# include "../gnl/get_next_line.h"
+# include "../gnl/get_next_line_bonus.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -35,12 +35,14 @@ typedef struct s_vars {
 	void		*img3;
 	void		*img4;
 	void		*img5;
+	void		*img6;
 	char		**map_addr;
 	char		*map_recur;
 	int			row_length;
 	int			col_length;
 	int			move_records;
 	int			prey_collect;
+	int			temp;
 	t_locations	l_start;
 	t_locations	l_end;
 	t_locations	l_prey;
@@ -78,6 +80,7 @@ enum e_ERROR{
 
 # define BACKGROUND_ROW 500
 # define BACKGROUND_COL 800
+# define DENSITY 10
 
 void	sl_initialize_int_vars(t_vars *vars);
 char	**sl_open_file(char	*dir, t_vars *vars);

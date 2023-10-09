@@ -1,18 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   sl_other_utils_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/28 10:04:38 by yongjale          #+#    #+#             */
-/*   Updated: 2023/05/28 10:19:40 by yongjale         ###   ########.fr       */
+/*   Created: 2023/02/20 15:45:37 by yongjale          #+#    #+#             */
+/*   Updated: 2023/09/24 21:17:11 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "so_long_bonus.h"
 
-char	*mt_itoa(int n)
+int	sl_strncmp(const char *s1, const char *s2, size_t n)
+{
+	while (n--)
+	{
+		if (*(unsigned char *)s1 > *(unsigned char *)s2)
+			return (1);
+		else if (*(unsigned char *)s1 < *(unsigned char *)s2)
+			return (-1);
+		else if (!*s1)
+			return (0);
+		s1++;
+		s2++;
+	}
+	return (0);
+}
+
+size_t	sl_strlen(const char *s)
+{
+	size_t	len;
+
+	len = 0;
+	while (*(s) != '\n' && *(s++))
+		len++;
+	return (len);
+}
+
+char	*sl_itoa(int n)
 {
 	size_t	len;
 	char	*ret;
@@ -39,4 +65,14 @@ char	*mt_itoa(int n)
 		val /= 10;
 	}
 	return (ret);
+}
+
+void	sl_free(int err_num, char **map)
+{
+	int	num;
+
+	num = 0;
+	while (num < err_num)
+		free(map[num++]);
+	sl_error(MALLOC_ERR);
 }

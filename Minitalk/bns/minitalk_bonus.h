@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.h                                           :+:      :+:    :+:   */
+/*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/21 16:58:23 by yongjale          #+#    #+#             */
-/*   Updated: 2023/05/21 16:59:50 by yongjale         ###   ########.fr       */
+/*   Created: 2023/05/12 17:55:03 by yongjale          #+#    #+#             */
+/*   Updated: 2023/09/28 17:51:30 by yongjale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERVER_H
-# define SERVER_H
+#ifndef MINITALK_BONUS_H
+# define MINITALK_BONUS_H
 
-void	server_signal(int signal);
+# include <unistd.h>
+# include <signal.h>
+# include "../ft_printf/ft_printf.h"
 
 #endif

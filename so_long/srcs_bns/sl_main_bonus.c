@@ -1,0 +1,113 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sl_main_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yongjale <yongjale@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/19 23:41:06 by yongjale          #+#    #+#             */
+/*   Updated: 2023/09/28 11:35:57 by yongjale         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "so_long_bonus.h"
+
+static void	init_img(t_vars *vars)
+{
+	t_imgs	imgs;
+
+	vars->win = mlx_new_window(vars->mlx, 50 * vars->col_length,
+			50 * vars->row_length, "Kirby's Return to SO-LONG World!");
+	vars->img1 = mlx_xpm_file_to_image(vars->mlx, "imgs/background.xpm",
+			&imgs.back[0], &imgs.back[1]);
+	vars->img2 = mlx_xpm_file_to_image(vars->mlx, "imgs/player.xpm",
+			&imgs.back[0], &imgs.back[1]);
+	vars->img3 = mlx_xpm_file_to_image(vars->mlx, "imgs/wall.xpm",
+			&imgs.back[0], &imgs.back[1]);
+	vars->img4 = mlx_xpm_file_to_image(vars->mlx, "imgs/cake.xpm",
+			&imgs.back[0], &imgs.back[1]);
+	vars->img5 = mlx_xpm_file_to_image(vars->mlx, "imgs/door.xpm",
+			&imgs.back[0], &imgs.back[1]);
+	vars->img6 = mlx_xpm_file_to_image(vars->mlx, "imgs/enemy.xpm",
+			&imgs.back[0], &imgs.back[1]);
+}
+
+static void	make_enemey(char **map, t_vars *vars)
+{
+	int	row;
+	int	col;
+
+	vars->temp = 0;
+	row = 0;
+	while (row < vars->row_length)
+	{
+		col = 0;
+		while (col < vars->col_length)
+		{
+			if (map[row][col] == '0')
+			{
+				vars->temp++;
+				if (vars->temp % DENSITY == DENSITY - 1)
+					map[row][col] = 'M';
+			}
+			col++;
+		}
+		row++;
+	}
+}
+
+int	main(int argc, char **argv)
+{
+	t_vars	vars;
+	char	**map;
+
+	if (argc != 2)
+		sl_error(INPUT_ERR);
+	sl_initialize_int_vars(&vars);
+	map = sl_open_file(argv[1], &vars);
+	vars.mlx = mlx_init();
+	init_img(&vars);
+	sl_update_window(map, &vars);
+	mlx_hook(vars.win, ON_KEY_PRESS, 0, sl_key_hook, &vars);
+	mlx_hook(vars.win, ON_DESTROY, 0, sl_destroy_hook, &vars);
+	mlx_loop(vars.mlx);
+}
+
+void	sl_initialize_int_vars(t_vars *vars)
+{
+	vars->map_recur = NULL;
+	vars->row_length = 0;
+	vars->col_length = 0;
+	vars->move_records = 0;
+	vars->prey_collect = 0;
+	vars->l_start.amount = 0;
+	vars->l_end.amount = 0;
+	vars->l_start.amount = 0;
+	vars->l_prey.amount = 0;
+	vars->prey_collect = 0;
+	vars->temp = 0;
+}
+
+char	**sl_open_file(char *dir, t_vars *vars)
+{
+	int		fd;
+	char	**map;
+
+	fd = open(dir, O_RDONLY);
+	if (fd == -1)
+		sl_error(READ_ERR);
+	if (sl_strlen(dir) < 4)
+		write(0, "[REF] THE NAME OF FILE IS NOT '.BER'-TERMINATED\n", 49);
+	else if (sl_strncmp(dir + sl_strlen(dir) - 4, ".ber", 4) != 0)
+		write(0, "[REF] THE NAME OF FILE IS NOT '.BER'-TERMINATED\n", 49);
+	vars->row_length = sl_count_line(fd);
+	close(fd);
+	fd = open(dir, O_RDONLY);
+	map = sl_record_map(fd, vars->row_length);
+	vars->map_addr = map;
+	vars->col_length = sl_strlen(map[0]);
+	sl_assign_mapdata(map, vars);
+	sl_check_mapdata(map, vars);
+	make_enemey(map, vars);
+	return (map);
+}
