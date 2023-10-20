@@ -1,8 +1,8 @@
-NAME	= megaphone
+NAME	= ex00
 
 CC		= c++
 CFLAG	= -Wall -Wextra -Werror -std=c++98
-SRCS	= megaphone.cpp
+SRCS	= main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 OBJS	= ${SRCS:.cpp=.o}
 
 all		: ${NAME}
