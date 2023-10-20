@@ -2,6 +2,7 @@
 # define CONTACT_HPP
 
 # include <iostream>
+# include <iomanip>
 
 class Contact{
 	private:
@@ -16,6 +17,7 @@ class Contact{
 		Contact();
 		~Contact();
 		void	init(void);
+		void	print(void);
 };
 
 #endif
