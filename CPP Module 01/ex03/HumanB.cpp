@@ -8,16 +8,12 @@ HumanB::~HumanB(void) {
 }
 
 void	HumanB::setWeapon(Weapon& weap) {
-	this->_weap = weap;
-}
-
-void	HumanB::setWeapon(Weapon& weap) {
 	this->_weap = &weap;
 }
 
 void	HumanB::attack(void) {
-	if (this->_weap && this->_weap.getType() == "")
-		std::cout << this->_name << " attacks with their " << this->_weap << std::endl;
+	if (this->_weap && this->_weap->getType() != "")
+		std::cout << this->_name << " attacks with their " << this->_weap->getType() << std::endl;
 	else
 		std::cout << "No Weapon OR No Weapon Type" << std::endl;
 }
