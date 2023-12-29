@@ -6,7 +6,7 @@ HumanA::HumanA(std::string name, Weapon& weap) : _name(name), _weap(weap) {
 HumanA::~HumanA(void) {
 }
 
-void	HumanA::attack(void) {
+void	HumanA::attack(void) const {
 	if (this->_weap.getType() == "")
 		std::cout << "No Weapon Type" << std::endl;
 	else

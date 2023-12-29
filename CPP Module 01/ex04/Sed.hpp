@@ -10,7 +10,7 @@ class Sed {
 		std::string _outfile;
 	public:
 		Sed(std::string name);
-		 ~Sed();
+		~Sed();
 		void replace(std::string s1, std::string s2);
 };
 

@@ -21,5 +21,5 @@ int main()
 		jim.attack();
 	}
 
-	return 0; 
+	return 0;
 }

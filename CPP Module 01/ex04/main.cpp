@@ -6,6 +6,6 @@ int main(int argc, char **argv) {
 		return (1);
 	}
 	Sed NewSed(argv[1]);
-	NewSed.replace(argv[2], argv[2]);
+	NewSed.replace(argv[2], argv[3]);
 	return (0);
 }

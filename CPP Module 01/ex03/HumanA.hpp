@@ -10,7 +10,7 @@ class HumanA {
 	public:
 		HumanA(std::string name, Weapon& weap);
 		~HumanA();
-		void	attack(void);
+		void	attack(void) const;
 };
 
 #endif
