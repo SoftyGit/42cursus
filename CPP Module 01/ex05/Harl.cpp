@@ -18,21 +18,11 @@ Harl::~Harl() {
 }
 void	Harl::complain(std::string level) {
 	std::string index[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	void	(Harl::*func[])(void) =
+		{&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	size_t num = std::distance(index, std::find(&index[0], &index[4], level));	
-	switch (num) {
-		case 0:
-			this->debug();
-			break ;
-		case 1:
-			this->info();
-			break ;
-		case 2:
-			this->warning();
-			break ;
-		case 3:
-			this->error();
-			break ;
-		default:
-			std::cout << "Harl complains any other things" << std::endl;
-	}
+	if (num <= 3)
+		(this->*func[num])();
+	else
+		std::cout << "Harl complains any other things" << std::endl;
 }

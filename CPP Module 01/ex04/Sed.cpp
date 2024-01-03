@@ -22,11 +22,13 @@ void	 Sed::replace(std::string s1, std::string s2) {
 	}
 	while (1) {
 		std::getline(ifs, data, (char)0);
+		if (s1 == s2)
+			break ;
 		index = data.find(s1, 0);
 		while (index != std::string::npos) {
 			data.erase(index, s1.length());
 			data.insert(index, s2);
-			index = data.find(s1, index + s1.length());
+			index = data.find(s1, index + s2.length());
 		}
 		if (ifs.eof())
 			break ;
