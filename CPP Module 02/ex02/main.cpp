@@ -1,4 +1,5 @@
 #include "Fixed.hpp"
+//#include <iomanip>
 
 int	main(void) {
 	Fixed		a;
@@ -14,5 +15,7 @@ int	main(void) {
 	
 	std::cout << Fixed::max(a, b) << std::endl;
 
+	// std::cout << std::fixed << std::setprecision(20);
+	// std::cout << 5.05f << std::endl;
 	return 0;
 }
