@@ -1,11 +1,18 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "WrongCat.hpp"
+#include <cstdlib>
+
+void	check(void) {
+	system("leaks ex00");
+}
 
 int main() {
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
+
+	atexit(check);
 
 	std::cout << "j: " << j->getType() << " " << std::endl;
 	std::cout << "i: " << i->getType() << " " << std::endl;
@@ -28,9 +35,5 @@ int main() {
 
 	delete w_meta;
 	delete k;
-	while (1)
-	{
-		
-	}
-	return 0;
+	exit(0);
 }
