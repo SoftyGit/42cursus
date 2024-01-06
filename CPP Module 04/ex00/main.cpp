@@ -3,6 +3,7 @@
 #include "WrongCat.hpp"
 
 int main() {
+	std::cout << "--NORMAL-----------------------------------" << std::endl;
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
@@ -13,11 +14,16 @@ int main() {
 	j->makeSound();
 	meta->makeSound();
 
+	std::cout << "--COPY-----------------------------------" << std::endl;
+	const Animal* m = new Animal(*i);
+	m->makeSound();
+	std::cout << "--DELETE---------------------------------" << std::endl;
 	delete meta;
 	delete j;
 	delete i;
+	delete m;
 
-	std::cout << "-----------------------------------------" << std::endl;
+	std::cout << "--WRONG----------------------------------" << std::endl;
 
 	const WrongAnimal* w_meta = new WrongAnimal();
 	const WrongAnimal* k = new WrongCat();
@@ -26,6 +32,7 @@ int main() {
 	k->makeSound();
 	w_meta->makeSound();
 
+	std::cout << "--WRONG=DELETE---------------------------" << std::endl;
 	delete w_meta;
 	delete k;
 
