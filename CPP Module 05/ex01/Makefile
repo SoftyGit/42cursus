@@ -1,8 +1,8 @@
-NAME	= ex03
+NAME	= ex01
 
 CC		= c++
-CFLAG	= -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
-SRCS	= main.cpp
+CFLAG	= -Wall -Wextra -Werror -std=c++98
+SRCS	= main.cpp Bureaucrat.cpp Form.cpp
 OBJS	= ${SRCS:.cpp=.o}
 
 all		: ${NAME}
