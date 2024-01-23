@@ -38,14 +38,14 @@ const char	*Form::GradeTooLowException::what(void) const throw() {
 }
 
 void		Form::beSigned(Bureaucrat &srcs) {
-	if (this->_signGrade > srcs.get_Grade())
+	if (this->_signGrade < srcs.get_Grade())
 		throw GradeTooLowException();
 	this->_isSigned = true;
 }
 
 std::ostream&	operator<<(std::ostream& os, const Form& srcs) {
 	os << "Name: " << srcs.get_Name() << std::endl;
-	os << "isSigned: " << srcs.get_isSigned() << std::endl;
+	os << std::boolalpha << "isSigned: " << srcs.get_isSigned() << std::endl;
 	os << "signGrade: " << srcs.get_signGrade() << std::endl;
 	os << "execGrade: " << srcs.get_execGrade();
 

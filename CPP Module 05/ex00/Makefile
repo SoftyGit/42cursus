@@ -1,7 +1,7 @@
 NAME	= ex00
 
 CC		= c++
-CFLAG	= -Wall -Wextra -Werror -std=c++98
+CFLAG	= -Wall -Wextra -Werror -std=c++98 #-g -fsanitize=address
 SRCS	= main.cpp Bureaucrat.cpp
 OBJS	= ${SRCS:.cpp=.o}
 
