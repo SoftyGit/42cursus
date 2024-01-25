@@ -11,6 +11,10 @@ int main() {
 		ShrubberyCreationForm shr("HOLY");
 		RobotomyRequestForm rob("MOLY");
 		PresidentialPardonForm pre("HOLYMOLY");
+		std::cout << bur << std::endl;
+		std::cout << shr << std::endl;
+		std::cout << rob << std::endl;
+		std::cout << pre << std::endl;
 	}
 	catch (...) {
 		std::cout << "It seems to be NON_ERROR" << std::endl;
@@ -73,6 +77,41 @@ int main() {
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
+	}
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << "TEST 6: no error in excuteForm" << std::endl;
+	try {
+		Bureaucrat bur("yongjale", 5);
+		PresidentialPardonForm pre("MOLY");
+
+		bur.signForm(pre);
+		bur.executeForm(pre);
+	}
+	catch (...) {
+		std::cout << "It seems to be NON_ERROR" << std::endl;
+	}
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << "TEST 7: invalid sign in excuteForm" << std::endl;
+	try {
+		Bureaucrat bur("yongjale", 5);
+		PresidentialPardonForm pre("MOLY");
+
+		bur.executeForm(pre);
+	}
+	catch (...) {
+		std::cout << "It seems to be NON_ERROR" << std::endl;
+	}
+	std::cout << "-------------------------------------" << std::endl;
+	std::cout << "TEST 8: valid sign & invalid grade in excuteForm" << std::endl;
+	try {
+		Bureaucrat bur("yongjale", 6);
+		PresidentialPardonForm pre("MOLY");
+
+		bur.signForm(pre);
+		bur.executeForm(pre);
+	}
+	catch (...) {
+		std::cout << "It seems to be NON_ERROR" << std::endl;
 	}
 	std::cout << "-------------------------------------" << std::endl;
 	return 0;

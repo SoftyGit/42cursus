@@ -15,8 +15,8 @@ int main() {
 		std::cout << "--------------" << std::endl;
 		std::cout << for1 << std::endl;
 	}
-	catch (Form::GradeTooLowException &e) {
-		std::cout << e.what() << std::endl;
+	catch (...) {
+		std::cout << "It seems to be NON_ERROR" << std::endl;
 	}
 	///////////////////////////////////////////////
 	std::cout << "-------------------------------------" << std::endl;
