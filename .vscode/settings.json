@@ -84,7 +84,8 @@
 		"fstream": "cpp",
 		"iomanip": "cpp",
 		"cinttypes": "cpp",
-		"bureaucrat.hpp": "c"
+		"bureaucrat.hpp": "c",
+		"scalarconverter.h": "c"
 	},
     "C_Cpp.errorSquiggles": "disabled",
     "cmake.configureOnOpen": true,
