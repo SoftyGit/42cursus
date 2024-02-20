@@ -1,4 +1,4 @@
-NAME	= ex00
+NAME	= ex02
 
 CC		= c++
 CFLAG	= -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
@@ -11,7 +11,7 @@ ${NAME}	: ${OBJS}
 	${CC} ${CFLAG} -o ${NAME} ${OBJS}
 
 %.o		: %.cpp
-	${CC} ${CFLAG} -c $< -o $@
+	${CC} ${CFLAG} -c $< -o $@ -I./
 
 clean	:
 	rm -rf ${OBJS}
