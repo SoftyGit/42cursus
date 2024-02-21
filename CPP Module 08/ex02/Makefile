@@ -1,8 +1,8 @@
-NAME	= ex01
+NAME	= ex02
 
 CC		= c++
 CFLAG	= -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
-SRCS	= main.cpp Span.cpp
+SRCS	= main.cpp
 OBJS	= ${SRCS:.cpp=.o}
 
 all		: ${NAME}
