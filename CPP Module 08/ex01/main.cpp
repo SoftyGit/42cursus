@@ -77,9 +77,10 @@ int main()
 	catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
+	
 	std::cout << "--Test8--add-many-numbers--big---------------" << std::endl;
 	try {
-	Span test8 = Span(100000);
+	Span test8 = Span(60001);
 	test8.addManyNumber(1, 50000);
 	test8.addManyNumber(2, 10000);
 	test8.addNumber(20);

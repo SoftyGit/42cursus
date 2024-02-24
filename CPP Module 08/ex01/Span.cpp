@@ -4,6 +4,7 @@ Span::Span() {}
 Span::~Span() {}
 Span::Span(unsigned int N) : _length(N) {
 }
+
 Span::Span(const Span& srcs) {
 	*this = srcs;
 }
@@ -14,6 +15,7 @@ Span& Span::operator=(const Span& srcs) {
 	}
 	return *this;
 }
+
 void Span::addNumber(int a) {
 	if (_vec.size() >= _length)
 		throw std::out_of_range("Full!");
