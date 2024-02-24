@@ -42,7 +42,7 @@ unsigned int Span::shortestSpan() {
 	std::sort(sortVec.begin(), sortVec.end());
 
 	for (std::vector<int>::iterator i = sortVec.begin(); i != sortVec.end() - 1; i++)
-		if (std::abs(*(i + 1) - *i) < min)
+		if (static_cast<unsigned int>(std::abs(*(i + 1)) - *i) < min)
 			min = std::abs(*(i + 1) - *i);
 	return min;
 }
