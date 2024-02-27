@@ -1,8 +1,8 @@
-NAME	= RPN
+NAME	= PmergeMe
 
 CC		= c++
 CFLAG	= -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
-SRCS	= main.cpp RPN.cpp
+SRCS	= main.cpp PmergeMe.cpp
 OBJS	= ${SRCS:.cpp=.o}
 
 all		: ${NAME}
