@@ -2,6 +2,7 @@
 # define PMERGEME_HPP
 
 # include <iostream>
+# include <cmath>
 # include <vector>
 # include <list>
 
