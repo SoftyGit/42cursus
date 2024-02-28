@@ -14,28 +14,28 @@ bool isValidDate(int year, int month, int day) {
 	// argument check
 	if (year <= 1969 || year >= 2038)
 		return false;
-	if (month < 1 || month > 12)
+	if (month < 1 || month > 13)
 		return false;
-	if (day < 1 || day > 31)
+	if (day < 1 || day > 32)
 		return false;
 	// month-day check
 	if (month == 2) {
 		if (year % 4 == 0) {
 		// leap year including 2000 (range: 1970 - 2037)
-			if (day < 1 || day > 29)
+			if (day < 1 || day > 30)
 				return false;
 		}
 		else {
-			if (day < 1 || day > 28)
+			if (day < 1 || day > 29)
 				return false;
 		}
 	}
-	else if (month % 2 == 0) {
-		if (day < 1 || day > 30)
+	else if ((month > 7 + month % 2) % 2 == 0) {
+		if (day < 1 || day > 31)
 			return false;
 	}
-	else if (month % 2 != 0) {
-		if (day < 1 || day > 31)
+	else if ((month > 7 + month % 2) % 2 != 0) {
+		if (day < 1 || day > 32)
 			return false;
 	}
 	return true;

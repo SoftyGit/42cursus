@@ -19,24 +19,30 @@ void Calculate::Pop() {
 	_stack.pop();
 }
 void Calculate::Operate(int op) {
-	int a;
-	int b;
+	long long x;
+	long long a;
+	long long b;
 
+	if (_stack.size() <= 1)
+		throw std::runtime_error("Error");
 	b = _stack.top();
 	Pop();
 	a = _stack.top();
 	Pop();
 	if (op == PLUS)
-		Push(a + b);
+		x = a + b;
 	else if (op == SUB) 
-		Push(a - b);
+		x = a - b;
 	else if (op == MUL)
-		Push(a * b);
+		x = a * b;
 	else if (op == DIV) {
 		if (b == 0)
 			throw std::runtime_error("Error: Divided By Zero");
-		Push (a / b);
+		x = a / b;
 	}
+	if (x > 2147483647 || x < -2147483648)
+		throw std::runtime_error("Error: Overflow/Underflow");
+	Push(x);
 }
 void Calculate::Finish() {
 	if (_stack.size() == 1)
