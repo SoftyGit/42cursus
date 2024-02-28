@@ -19,7 +19,7 @@ void Calculate::Pop() {
 	_stack.pop();
 }
 void Calculate::Operate(int op) {
-	long long x;
+	long long x = 0;
 	long long a;
 	long long b;
 
