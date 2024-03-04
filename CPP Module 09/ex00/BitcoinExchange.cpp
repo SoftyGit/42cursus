@@ -11,33 +11,23 @@ Bitcoin& Bitcoin::operator=(const Bitcoin& srcs) {
 }
 
 bool isValidDate(int year, int month, int day) {
-	// argument check
-	if (year <= 1969 || year >= 2038)
+	// year: 1970-2037 month: 1-12 day: 1-31
+	if ( (year <= 1969 || year >= 2038) ||
+		 (month <= 0 || month >= 13) ||
+		 (day <= 0 || day >= 32) )
 		return false;
-	if (month < 1 || month > 13)
-		return false;
-	if (day < 1 || day > 32)
-		return false;
-	// month-day check
+	// month: 2
 	if (month == 2) {
-		if (year % 4 == 0) {
+		if ( (year % 4 == 0) && (day >= 30) ) 
 		// leap year including 2000 (range: 1970 - 2037)
-			if (day < 1 || day > 30)
-				return false;
-		}
-		else {
-			if (day < 1 || day > 29)
-				return false;
-		}
-	}
-	else if ((month > 7 + month % 2) % 2 == 0) {
-		if (day < 1 || day > 31)
+			return false;
+		else if ( (year % 4 != 0) && (day >= 29) ) 
 			return false;
 	}
-	else if ((month > 7 + month % 2) % 2 != 0) {
-		if (day < 1 || day > 32)
+	// month: 4 6 9 11
+	else if ( ((month > 7) + month) % 2 == 0 )
+		if (day >= 31)
 			return false;
-	}
 	return true;
 }
 
@@ -60,6 +50,7 @@ Bitcoin::Bitcoin(std::string input) : _input(input) {
 	else {
 		throw std::runtime_error("Error: could not open csv file.");
 	}
+	
 	// check input.txt
 	std::ifstream ifs_input;
 	ifs_input.open(_input.c_str());

@@ -122,8 +122,9 @@ std::list<size_t> PList::MergeInsertion(std::list<size_t>& d, size_t n) {
 		}
 		else
 			jacob_idx = getList(_jacob, jacob_level) + (i - 1);
+		jacob_idx = (n - (n / 2)) - jacob_idx + 1;
 		size_t value = getList(b, jacob_idx);
-		size_t idx = BinaryInsertion(a, 1, n / 2 + i - 1, value);
+		size_t idx = BinaryInsertion(a, 1, (n / 2) + i - 1, value);
 		insertList(a, idx, value);
 	}
 	return a;
@@ -233,11 +234,10 @@ std::vector<size_t> PVector::MergeInsertion(std::vector<size_t>& d, size_t n) {
 		}
 		else
 			jacob_idx = _jacob[jacob_level - 1] + (i - 1);
-		std::cout << jacob_idx << " ";
+		jacob_idx = (n - (n / 2)) - jacob_idx + 1;
 		size_t value = b[jacob_idx - 1];
-		size_t idx = BinaryInsertion(a, 1, n / 2 + i - 1, value);
+		size_t idx = BinaryInsertion(a, 1, (n / 2) + i - 1, value);
 		insertVector(a, idx, value);
 	}
-	std::cout << std::endl;
 	return a;
 }
