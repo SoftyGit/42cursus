@@ -101,7 +101,7 @@ std::list<size_t> PList::MergeInsertion(std::list<size_t>& d, size_t n) {
 	for (size_t i = 1; i <= n / 2; i++) {
 		size_t idx = findList(a, getList(old_a, i));
 		if (idx != 0)
-			modifyList(b, i, getList(old_b, idx));
+			modifyList(b, idx, getList(old_b, i));
 	}
 
 	// Step 3: Insertion
@@ -112,21 +112,29 @@ std::list<size_t> PList::MergeInsertion(std::list<size_t>& d, size_t n) {
 	else
 		jacob = 2;
 	for (size_t i = 1; i <= n - (n / 2); i++) {
+		if (n % 2 == 1 && i == n - (n / 2)) {
+			size_t value = getList(b, i);
+			size_t idx = BinaryInsertion(a, 1, (n / 2) + i - 1, value);
+			insertList(a, idx, value);
+			continue;
+		}
 		size_t jacob_level = getJacob(i);
 		size_t jacob_idx;
 		if (i != 1) {
 			if (i <= jacob)
 				jacob_idx = getList(_jacob, jacob_level) - (i - 1 - getList(_jacob, jacob_level - 1));
 			else
-				jacob_idx = getList(_jacob, jacob_level) - (i - 1 - getList(_jacob, jacob_level - 1)) - (getList(_jacob, jacob_level) - (n - n / 2));
+				jacob_idx = getList(_jacob, jacob_level) - (i - 1 - getList(_jacob, jacob_level - 1)) - (getList(_jacob, jacob_level) - (n / 2));
 		}
 		else
 			jacob_idx = getList(_jacob, jacob_level) + (i - 1);
-		jacob_idx = (n - (n / 2)) - jacob_idx + 1;
+		jacob_idx = (n / 2) - jacob_idx + 1;
 		size_t value = getList(b, jacob_idx);
-		size_t idx = BinaryInsertion(a, 1, (n / 2) + i - 1, value);
+		size_t idx = BinaryInsertion(a, jacob_idx, (n / 2) + i - 1, value);
+		std::cout << jacob_idx << " ";
 		insertList(a, idx, value);
 	}
+	std::cout << std::endl;
 	return a;
 }
 
@@ -213,30 +221,36 @@ std::vector<size_t> PVector::MergeInsertion(std::vector<size_t>& d, size_t n) {
 	for (size_t i = 1; i <= n / 2; i++) {
 		size_t idx = findVector(a, old_a[i - 1]);
 		if (idx != 0)
-			modifyVector(b, i, old_b[idx - 1]);
+			modifyVector(b, idx, old_b[i - 1]);
 	}
 
 	// Step 3: Insertion
 	size_t jacob_max_idx = getJacob(n - n / 2);
 	size_t jacob;
 	if (jacob_max_idx != 1)
-		jacob = _jacob[getJacob(n - n / 2) - 2];
+		jacob = _jacob[jacob_max_idx - 2];
 	else
 		jacob = 2;
 	for (size_t i = 1; i <= n - (n / 2); i++) {
+		if (n % 2 == 1 && i == n - (n / 2)) {
+			size_t value = b[i - 1];
+			size_t idx = BinaryInsertion(a, 1, (n / 2) + i - 1, value);
+			insertVector(a, idx, value);
+			continue;
+		}
 		size_t jacob_level = getJacob(i);
 		size_t jacob_idx;
 		if (i != 1) {
 			if (i <= jacob)
-				jacob_idx = _jacob[jacob_level - 1] - (i - 1 - _jacob[jacob_level - 1 - 1]);
+				jacob_idx = _jacob[jacob_level - 1] - (i - 1 - _jacob[jacob_level - 2]);
 			else
-				jacob_idx = _jacob[jacob_level - 1] - (i - 1 - _jacob[jacob_level - 1 - 1]) - (_jacob[jacob_level - 1] - (n - n / 2));
+				jacob_idx = _jacob[jacob_level - 1] - (i - 1 - _jacob[jacob_level - 2]) - (_jacob[jacob_level - 1] - (n / 2));
 		}
 		else
 			jacob_idx = _jacob[jacob_level - 1] + (i - 1);
-		jacob_idx = (n - (n / 2)) - jacob_idx + 1;
+		jacob_idx = (n / 2) - jacob_idx + 1;
 		size_t value = b[jacob_idx - 1];
-		size_t idx = BinaryInsertion(a, 1, (n / 2) + i - 1, value);
+		size_t idx = BinaryInsertion(a, jacob_idx, (n / 2) + i - 1, value);
 		insertVector(a, idx, value);
 	}
 	return a;

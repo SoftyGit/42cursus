@@ -10,6 +10,19 @@ Bitcoin& Bitcoin::operator=(const Bitcoin& srcs) {
 	return *this;
 }
 
+bool isValidNumber(std::string s1, std::string s2, std::string s3) {
+	for (std::string::iterator it = s1.begin(); it != s1.end(); it++)
+		if (!std::isdigit(*it))
+			return false;
+	for (std::string::iterator it = s2.begin(); it != s2.end(); it++)
+		if (!std::isdigit(*it))
+			return false;
+	for (std::string::iterator it = s3.begin(); it != s3.end(); it++)
+		if (!std::isdigit(*it))
+			return false;
+	return true;
+}
+
 bool isValidDate(int year, int month, int day) {
 	// year: 1970-2037 month: 1-12 day: 1-31
 	if ( (year <= 1969 || year >= 2038) ||
@@ -65,6 +78,11 @@ Bitcoin::Bitcoin(std::string input) : _input(input) {
 				std::cout << "Error: bad input => " << line << std::endl;
 				continue; }
 			if (line[4] != '-' || line[7] != '-' || line.substr(10, 3) != std::string(" | ")) {
+				std::cout << "Error: bad input => " << line << std::endl;
+				continue; }
+			if (isValidNumber(line.substr(0, 4),
+							  line.substr(5, 2),
+							  line.substr(8, 2)) == false) {
 				std::cout << "Error: bad input => " << line << std::endl;
 				continue; }
 			if (isValidDate(std::atoi(line.substr(0, 4).c_str()),

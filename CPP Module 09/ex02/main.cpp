@@ -65,11 +65,11 @@ int main(int argc, char** argv) {
 		// After Print -------------------------------------------------/
 		std::cout << "After:   ";
 			// Use Sorted List
-			// for (std::list<size_t>::reverse_iterator rit_l = sortList.rbegin(); rit_l != sortList.rend(); rit_l++)
-			// 	std::cout << *rit_l << " ";
+			for (std::list<size_t>::reverse_iterator rit_l = sortList.rbegin(); rit_l != sortList.rend(); rit_l++)
+				std::cout << *rit_l << " ";
 			// Use Sorted Vector
-			for (std::list<size_t>::reverse_iterator rit_v = sortList.rbegin(); rit_v != sortList.rend(); rit_v++)
-				std::cout << *rit_v << " ";
+			// for (std::list<size_t>::reverse_iterator rit_v = sortList.rbegin(); rit_v != sortList.rend(); rit_v++)
+			// 	std::cout << *rit_v << " ";
 		std::cout << std::endl;
 
 		// Time ---------------------------------------------------------/
